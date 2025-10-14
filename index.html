@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Under The Stars</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: #0a0a15;
+            color: #d4d0e0;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* Animated starfield background */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        /* Cosmic gradient overlay */
+        .cosmic-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 20% 30%, rgba(80, 40, 120, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 70%, rgba(40, 60, 140, 0.12) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Main container */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 25px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 21, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(150, 130, 180, 0.2);
+        }
+        
+        nav .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #c8b8e8;
+            letter-spacing: 1px;
+        }
+        
+        nav .nav-links a {
+            color: #d4d0e0;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.05em;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        nav .nav-links a:hover {
+            color: #c8b8e8;
+        }
+        
+        /* Section styling */
+        section {
+            margin: 100px 0;
+            padding: 60px 0;
+        }
+        
+        section:first-of-type {
+            margin-top: 120px;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #e8e4f0;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            font-weight: 400;
+            margin-bottom: 35px;
+            color: #c8b8e8;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #d4d0e0;
+        }
+        
+        p {
+            font-size: 1.25em;
+            margin-bottom: 25px;
+            color: #c0bcd0;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 1.5em;
+            font-style: italic;
+            margin-bottom: 60px;
+            color: #b8b0d0;
+        }
+        
+        /* Media embeds */
+        .media-container {
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .media-container iframe {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* What to bring section */
+        .bring-list {
+            background: rgba(150, 130, 180, 0.08);
+            border-left: 3px solid #8070a0;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+        
+        .bring-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .bring-list li {
+            font-size: 1.2em;
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .bring-list li:before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #a090c0;
+        }
+        
+        /* Form styling */
+        .form-section {
+            background: rgba(150, 130, 180, 0.06);
+            padding: 50px;
+            border-radius: 15px;
+            margin: 60px 0;
+            border: 1px solid rgba(150, 130, 180, 0.2);
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 12px 0;
+            background: rgba(10, 10, 21, 0.6);
+            border: 1px solid rgba(150, 130, 180, 0.3);
+            border-radius: 8px;
+            color: #d4d0e0;
+            font-size: 1.1em;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8070a0;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #6050a0 0%, #8070a0 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.15em;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(96, 80, 160, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(150, 130, 180, 0.2);
+            margin-top: 100px;
+        }
+        
+        footer a {
+            color: #c8b8e8;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(200, 184, 232, 0.3);
+        }
+        
+        footer a:hover {
+            border-bottom-color: #c8b8e8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            nav .nav-links a { margin-left: 15px; font-size: 0.95em; }
+            .form-section { padding: 30px 25px; }
+            .media-container iframe { height: 200px !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Starfield -->
+    <div class="stars" id="starfield"></div>
+    <div class="cosmic-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Night Under The Stars</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#esalen">Esalen Meditation</a>
+                <a href="#contact">Connect</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home">
+            <h1>Night Under The Stars</h1>
+            <p class="subtitle">A guided meditation experience beneath the cosmos</p>
+            <p style="text-align: center; font-size: 1.3em; margin: 40px 0;">Where consciousness meets the infinite. Where we remember what we've always known.</p>
+        </section>
+        
+        <!-- Video Embed -->
+        <div class="media-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/aX9ogv0PEug?si=Y4vfGd9SsSFdGqgY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        
+        <!-- About Section -->
+        <section id="about">
+            <h2>The Experience</h2>
+            <p>Night Under The Stars is an invitation to turn inward together. Through guided meditation with a shared audio experience, we create space for individual journeys within collective presence.</p>
+            
+            <p>Each gathering begins with a 30-minute meditation featuring an exclusive playlist shared through personal headphones. We synchronize our experience while honoring each person's unique path. After the meditation, we share the silence together beneath the stars, often witnessing phenomena that emerge through our collective attention.</p>
+            
+            <div class="bring-list">
+                <h3>What to Bring</h3>
+                <ul>
+                    <li>Cozy, warm clothes (we'll be outside under the stars)</li>
+                    <li>Audio headphones or earphones</li>
+                    <li>Any meditative tools that help you access your "space" (eye masks, crystals, journals)</li>
+                    <li>An open and curious wonder toward the world we share</li>
+                </ul>
+            </div>
+            
+            <p style="text-align: center; font-style: italic; margin-top: 50px;">"This is about remembering. About returning to what's always been here, waiting beneath the noise."</p>
+        </section>
+        
+        <!-- Esalen Meditation Section -->
+        <section id="esalen">
+            <h2>The Esalen Meditation</h2>
+            <p>You don't need to wait for a gathering. The Esalen meditation is available for you to practice solo, anywhere under the stars.</p>
+            
+            <p>This 30-minute journey guides you through heart-centered awareness, inviting you to visualize green light radiating from your heart center—the frequency of love, connection, and healing. As you rest under the night sky, you become both witness and participant in the vast conversation between consciousness and cosmos.</p>
+            
+            <h3 style="margin-top: 50px;">The Practice</h3>
+            <p>Find a comfortable place outside where you can see the stars. Bring headphones, something warm to wear, and perhaps a blanket or mat. Press play on the playlist below and allow yourself to be guided.</p>
+            
+            <p>The meditation invites you to breathe green light through your heart chakra—not forcing, just allowing. This is the color of nature, of growth, of unconditional love. As you breathe, imagine this light expanding from your chest, filling your body, then radiating outward to touch the earth, the sky, the stars themselves.</p>
+            
+            <p style="font-style: italic; margin: 40px 0;">You may notice unusual phenomena. You may feel profound peace. You may experience both. Whatever arises, trust it. You're remembering an ancient practice of conscious communion with the universe.</p>
+            
+            <!-- Spotify Playlist -->
+            <div class="media-container" style="margin-top: 50px;">
+                <h3 style="margin-bottom: 30px;">Epiphany Awaits Playlist</h3>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4vn7cfgOzfjtlpsnC98NPi?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            
+            <div class="bring-list" style="margin-top: 50px;">
+                <h3>Tips for Solo Practice</h3>
+                <ul>
+                    <li>Choose a night with clear skies when possible</li>
+                    <li>Allow 45-60 minutes total (meditation plus integration time)</li>
+                    <li>Keep a journal nearby to capture any insights afterward</li>
+                    <li>Trust whatever arises—there's no "right" experience</li>
+                    <li>Share your experience with us if you feel called</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Contact Form -->
+        <section id="contact">
+            <div class="form-section">
+                <h2>Stay Connected</h2>
+                <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Join a gathering, share your experience, or simply stay in the loop.</p>
+                
+                <form name="nuts-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="nuts-contact">
+                    <p style="display: none;">
+                        <label>Don't fill: <input name="bot-field" /></label>
+                    </p>
+                    <input type="text" name="name" placeholder="Your name" required>
+                    <input type="email" name="email" placeholder="Your email" required>
+                    <textarea name="message" rows="5" placeholder="What draws you here? Share your story, ask about gatherings, or tell us about your solo meditation experience..."></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p style="font-size: 1.1em; margin-bottom: 20px;">Part of <a href="https://thetelepathycenter.com">The Telepathy Center</a></p>
+            <p style="font-style: italic; color: #b8b0d0;">Where meditation under stars is as natural as walking in forests.</p>
+            <p style="margin-top: 40px; font-size: 0.95em;">We're building this as we go. ✦</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Generate starfield
+        const starfield = document.getElementById('starfield');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starfield.appendChild(star);
+        }
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
