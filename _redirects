@@ -1,2 +1,0 @@
-# Enforce HTTPS (Netlify handles certs automatically)
-http://*  https://:splat  301!
