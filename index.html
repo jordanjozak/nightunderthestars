@@ -55,6 +55,27 @@
             50% { opacity: 0.9; }
         }
         
+        /* WEB 3.0 CRYSTALLINE STRUCTURE */
+        .crystalline-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(45deg, transparent 48%, rgba(138, 43, 226, 0.03) 49%, rgba(138, 43, 226, 0.03) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(212, 175, 55, 0.03) 49%, rgba(212, 175, 55, 0.03) 51%, transparent 52%);
+            background-size: 100px 100px;
+            pointer-events: none;
+            z-index: 2;
+            animation: crystallineShift 30s linear infinite;
+        }
+        
+        @keyframes crystallineShift {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 100px 100px, -100px 100px; }
+        }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -344,6 +365,7 @@
     <!-- ULTRA PREMIUM CANVAS -->
     <canvas id="canvas-bg"></canvas>
     <div class="gradient-mesh"></div>
+    <div class="crystalline-overlay"></div>
     
     <div class="container">
         <div class="badge">
@@ -430,8 +452,7 @@
         </div>
         
         <footer>
-            <p>Part of <a href="https://jordanjozak.com">Jordan Jozak</a> · <a href="https://thetelepathycenter.com">The Telepathy Center</a> · <a href="https://legacyvoices.com">Legacy Voices</a></p>
-            <p style="margin-top: 20px; font-style: italic; color: rgba(255, 255, 255, 0.4);">Sovereign · Respectful · Our Own</p>
+            <p>Part of <a href="https://jordanjozak.com">Jordan Jozak</a> · <a href="https://thetelepathycenter.com">The Telepathy Center</a> · <a href="https://www.thelegacyvoices.com">Legacy Voices</a></p>
             <p style="margin-top: 15px; font-size: 0.85em;">nightunderthestars.com</p>
         </footer>
     </div>
@@ -441,50 +462,59 @@
         const canvas = document.getElementById('canvas-bg');
         const ctx = canvas.getContext('2d');
         
-        let dpr = window.devicePixelRatio || 1;
-        
         function resizeCanvas() {
-            const rect = canvas.getBoundingClientRect();
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
-            ctx.scale(dpr, dpr);
-            canvas.style.width = rect.width + 'px';
-            canvas.style.height = rect.height + 'px';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
         
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
         const particles = [];
-        const particleCount = 120;
+        const particleCount = 150;
         const connectionDistance = 180;
 
         class Particle {
             constructor() {
-                this.x = Math.random() * canvas.width / dpr;
-                this.y = Math.random() * canvas.height / dpr;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
                 this.vx = (Math.random() - 0.5) * 0.3;
                 this.vy = (Math.random() - 0.5) * 0.3;
                 this.radius = Math.random() * 1.5 + 0.5;
                 this.hue = Math.random() > 0.3 ? 45 : 270;
+                this.twinkleSpeed = Math.random() * 0.02 + 0.01;
+                this.twinklePhase = Math.random() * Math.PI * 2;
             }
 
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
+                this.twinklePhase += this.twinkleSpeed;
 
-                if (this.x < 0 || this.x > canvas.width / dpr) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height / dpr) this.vy *= -1;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
 
             draw() {
+                const twinkle = (Math.sin(this.twinklePhase) + 1) / 2;
+                const alpha = 0.3 + (twinkle * 0.7);
+                
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
-                gradient.addColorStop(0, `hsla(${this.hue}, 70%, 60%, 0.8)`);
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4);
+                gradient.addColorStop(0, `hsla(${this.hue}, 70%, 60%, ${alpha})`);
+                gradient.addColorStop(0.5, `hsla(${this.hue}, 70%, 60%, ${alpha * 0.3})`);
                 gradient.addColorStop(1, `hsla(${this.hue}, 70%, 60%, 0)`);
                 ctx.fillStyle = gradient;
                 ctx.fill();
+                
+                // Star glimmer effect
+                if (twinkle > 0.8) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * 0.5, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 90%, ${(twinkle - 0.8) * 2})`;
+                    ctx.fill();
+                }
             }
         }
 
@@ -493,7 +523,7 @@
         }
 
         function animate() {
-            ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             particles.forEach(particle => {
                 particle.update();
@@ -530,6 +560,14 @@
         }
 
         animate();
+        
+        // Re-initialize particles on resize to cover full screen
+        window.addEventListener('resize', () => {
+            particles.length = 0;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        });
     </script>
 </body>
 </html>
