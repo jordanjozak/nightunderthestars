@@ -4,401 +4,532 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Night Under The Stars</title>
+    <meta name="description" content="Created by Jordan Jozak. Synchronized meditation under the stars. Events across CA, IN, CO, and VA.">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
-            background: #0a0a15;
-            color: #d4d0e0;
+            font-family: 'Crimson Text', serif;
+            background: #0a0a1a;
+            color: #e8e4f0;
             line-height: 1.8;
             overflow-x: hidden;
         }
         
-        /* Animated starfield background */
-        .stars {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 4s ease-in-out infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-        
-        /* Cosmic gradient overlay */
-        .cosmic-overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at 20% 30%, rgba(80, 40, 120, 0.15) 0%, transparent 50%),
-                        radial-gradient(ellipse at 80% 70%, rgba(40, 60, 140, 0.12) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        /* Main container */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 25px;
-        }
-        
-        /* Navigation */
-        nav {
+        /* ULTRA PREMIUM CANVAS BACKGROUND */
+        #canvas-bg {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            background: rgba(10, 10, 21, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(150, 130, 180, 0.2);
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
         }
         
-        nav .nav-content {
-            max-width: 1100px;
+        /* GRADIENT MESH OVERLAY */
+        .gradient-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(138, 43, 226, 0.15), transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.12), transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.08), transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.7;
+            animation: meshPulse 20s ease-in-out infinite;
+        }
+        
+        @keyframes meshPulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 0.9; }
+        }
+        
+        .container {
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
+            padding: 100px 40px 80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* BADGE */
+        .badge {
+            display: inline-flex;
             align-items: center;
-        }
-        
-        nav .logo {
-            font-size: 1.4em;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(138, 43, 226, 0.15);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
             font-weight: 600;
-            color: #c8b8e8;
-            letter-spacing: 1px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #b794f6;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
         }
         
-        nav .nav-links a {
-            color: #d4d0e0;
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 1.05em;
-            transition: color 0.3s;
-            font-family: 'Montserrat', sans-serif;
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #8a2be2;
+            border-radius: 50%;
+            animation: badgePulse 2s ease-in-out infinite;
         }
         
-        nav .nav-links a:hover {
-            color: #c8b8e8;
-        }
-        
-        /* Section styling */
-        section {
-            margin: 100px 0;
-            padding: 60px 0;
-        }
-        
-        section:first-of-type {
-            margin-top: 120px;
+        @keyframes badgePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
         
         h1 {
-            font-size: 3.5em;
-            font-weight: 300;
-            margin-bottom: 30px;
-            color: #e8e4f0;
-            text-align: center;
-            letter-spacing: 2px;
-        }
-        
-        h2 {
-            font-size: 2.5em;
+            font-size: clamp(3rem, 8vw, 4.5rem);
             font-weight: 400;
-            margin-bottom: 35px;
-            color: #c8b8e8;
-            text-align: center;
+            margin-bottom: 30px;
             letter-spacing: 1px;
-        }
-        
-        h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #d4d0e0;
-        }
-        
-        p {
-            font-size: 1.25em;
-            margin-bottom: 25px;
-            color: #c0bcd0;
+            color: #fff;
+            line-height: 1.1;
         }
         
         .subtitle {
-            text-align: center;
-            font-size: 1.5em;
-            font-style: italic;
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: rgba(255, 255, 255, 0.5);
             margin-bottom: 60px;
-            color: #b8b0d0;
+            font-weight: 300;
+            font-style: italic;
         }
         
-        /* Media embeds */
-        .media-container {
-            margin: 50px 0;
-            text-align: center;
+        p {
+            font-size: 1.35em;
+            color: rgba(232, 228, 240, 0.8);
+            margin-bottom: 25px;
+            font-weight: 400;
         }
         
-        .media-container iframe {
-            max-width: 100%;
+        .large {
+            font-size: 1.65em;
+            color: #fff;
+            margin: 60px 0 30px;
+            font-weight: 600;
+            font-style: italic;
+        }
+        
+        .divider {
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+            margin: 60px auto;
+        }
+        
+        /* COMING SOON BOX */
+        .coming-soon {
+            margin: 70px 0;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(212, 175, 55, 0.08));
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            backdrop-filter: blur(20px);
         }
         
-        /* What to bring section */
-        .bring-list {
-            background: rgba(150, 130, 180, 0.08);
-            border-left: 3px solid #8070a0;
-            padding: 30px 40px;
-            margin: 40px 0;
-            border-radius: 8px;
+        .coming-soon .date {
+            font-size: 3em;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
         
-        .bring-list ul {
-            list-style: none;
-            padding-left: 0;
+        .coming-soon p {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
         }
         
-        .bring-list li {
-            font-size: 1.2em;
-            margin: 15px 0;
-            padding-left: 30px;
+        /* VIDEO SECTION */
+        .video-section {
+            margin: 70px 0;
+        }
+        
+        .video-section h3 {
+            font-size: 1.75em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .video-description {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .video-wrapper {
             position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(10px);
         }
         
-        .bring-list li:before {
-            content: '✦';
+        .video-wrapper iframe {
             position: absolute;
+            top: 0;
             left: 0;
-            color: #a090c0;
+            width: 100%;
+            height: 100%;
         }
         
-        /* Form styling */
+        /* SPOTIFY SECTION */
+        .spotify {
+            margin: 70px 0;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+        }
+        
+        .spotify h3 {
+            font-size: 1.75em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .spotify .description {
+            text-align: center;
+            font-size: 1.1em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 30px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* FORM */
         .form-section {
-            background: rgba(150, 130, 180, 0.06);
-            padding: 50px;
-            border-radius: 15px;
-            margin: 60px 0;
-            border: 1px solid rgba(150, 130, 180, 0.2);
+            margin: 70px 0;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+        
+        .form-section h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 400;
+            color: #fff;
+        }
+        
+        .form-section .form-description {
+            text-align: center;
+            margin-bottom: 35px;
+            font-size: 1.15em;
+            color: rgba(255, 255, 255, 0.6);
         }
         
         input, textarea {
             width: 100%;
-            padding: 15px;
-            margin: 12px 0;
-            background: rgba(10, 10, 21, 0.6);
-            border: 1px solid rgba(150, 130, 180, 0.3);
-            border-radius: 8px;
-            color: #d4d0e0;
-            font-size: 1.1em;
-            font-family: 'Montserrat', sans-serif;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1em;
+            transition: all 0.3s ease;
         }
         
         input:focus, textarea:focus {
             outline: none;
-            border-color: #8070a0;
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
         }
         
         button {
-            background: linear-gradient(135deg, #6050a0 0%, #8070a0 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.15em;
-            border-radius: 8px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #6a11cb, #8a2be2);
+            color: #fff;
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1em;
             cursor: pointer;
-            transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
         }
         
         button:hover {
+            background: linear-gradient(135deg, #8a2be2, #6a11cb);
+            box-shadow: 0 6px 30px rgba(138, 43, 226, 0.5);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(96, 80, 160, 0.4);
         }
         
-        /* Footer */
+        /* FOOTER */
         footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid rgba(150, 130, 180, 0.2);
             margin-top: 100px;
+            padding-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(232, 228, 240, 0.5);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9em;
         }
         
         footer a {
-            color: #c8b8e8;
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
-            border-bottom: 1px solid rgba(200, 184, 232, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
         }
         
         footer a:hover {
-            border-bottom-color: #c8b8e8;
+            color: #FFD700;
+            border-bottom-color: rgba(255, 215, 0, 0.5);
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            h1 { font-size: 2.5em; }
-            h2 { font-size: 2em; }
-            nav .nav-links a { margin-left: 15px; font-size: 0.95em; }
-            .form-section { padding: 30px 25px; }
-            .media-container iframe { height: 200px !important; }
+            .container {
+                padding: 80px 30px 60px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .coming-soon .date {
+                font-size: 2.5em;
+            }
+            
+            .spotify, .form-section {
+                padding: 40px 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Starfield -->
-    <div class="stars" id="starfield"></div>
-    <div class="cosmic-overlay"></div>
+    <!-- ULTRA PREMIUM CANVAS -->
+    <canvas id="canvas-bg"></canvas>
+    <div class="gradient-mesh"></div>
     
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
-            <div class="logo">Night Under The Stars</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#esalen">Esalen Meditation</a>
-                <a href="#contact">Connect</a>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Main Content -->
     <div class="container">
-        <!-- Hero Section -->
-        <section id="home">
-            <h1>Night Under The Stars</h1>
-            <p class="subtitle">A guided meditation experience beneath the cosmos</p>
-            <p style="text-align: center; font-size: 1.3em; margin: 40px 0;">Where consciousness meets the infinite. Where we remember what we've always known.</p>
-        </section>
-        
-        <!-- Video Embed -->
-        <div class="media-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/aX9ogv0PEug?si=Y4vfGd9SsSFdGqgY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="badge">
+            <div class="badge-dot"></div>
+            Created by Jordan Jozak
         </div>
         
-        <!-- About Section -->
-        <section id="about">
-            <h2>The Experience</h2>
-            <p>Night Under The Stars is an invitation to turn inward together. Through guided meditation with a shared audio experience, we create space for individual journeys within collective presence.</p>
-            
-            <p>Each gathering begins with a 30-minute meditation featuring an exclusive playlist shared through personal headphones. We synchronize our experience while honoring each person's unique path. After the meditation, we share the silence together beneath the stars, often witnessing phenomena that emerge through our collective attention.</p>
-            
-            <div class="bring-list">
-                <h3>What to Bring</h3>
-                <ul>
-                    <li>Cozy, warm clothes (we'll be outside under the stars)</li>
-                    <li>Audio headphones or earphones</li>
-                    <li>Any meditative tools that help you access your "space" (eye masks, crystals, journals)</li>
-                    <li>An open and curious wonder toward the world we share</li>
-                </ul>
-            </div>
-            
-            <p style="text-align: center; font-style: italic; margin-top: 50px;">"This is about remembering. About returning to what's always been here, waiting beneath the noise."</p>
-        </section>
+        <h1>Night Under<br>The Stars</h1>
         
-        <!-- Esalen Meditation Section -->
-        <section id="esalen">
-            <h2>The Esalen Meditation</h2>
-            <p>You don't need to wait for a gathering. The Esalen meditation is available for you to practice solo, anywhere under the stars.</p>
-            
-            <p>This 30-minute journey guides you through heart-centered awareness, inviting you to visualize green light radiating from your heart center—the frequency of love, connection, and healing. As you rest under the night sky, you become both witness and participant in the vast conversation between consciousness and cosmos.</p>
-            
-            <h3 style="margin-top: 50px;">The Practice</h3>
-            <p>Find a comfortable place outside where you can see the stars. Bring headphones, something warm to wear, and perhaps a blanket or mat. Press play on the playlist below and allow yourself to be guided.</p>
-            
-            <p>The meditation invites you to breathe green light through your heart chakra—not forcing, just allowing. This is the color of nature, of growth, of unconditional love. As you breathe, imagine this light expanding from your chest, filling your body, then radiating outward to touch the earth, the sky, the stars themselves.</p>
-            
-            <p style="font-style: italic; margin: 40px 0;">You may notice unusual phenomena. You may feel profound peace. You may experience both. Whatever arises, trust it. You're remembering an ancient practice of conscious communion with the universe.</p>
-            
-            <!-- Spotify Playlist -->
-            <div class="media-container" style="margin-top: 50px;">
-                <h3 style="margin-bottom: 30px;">Epiphany Awaits Playlist</h3>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4vn7cfgOzfjtlpsnC98NPi?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-            
-            <div class="bring-list" style="margin-top: 50px;">
-                <h3>Tips for Solo Practice</h3>
-                <ul>
-                    <li>Choose a night with clear skies when possible</li>
-                    <li>Allow 45-60 minutes total (meditation plus integration time)</li>
-                    <li>Keep a journal nearby to capture any insights afterward</li>
-                    <li>Trust whatever arises—there's no "right" experience</li>
-                    <li>Share your experience with us if you feel called</li>
-                </ul>
-            </div>
-        </section>
+        <p class="subtitle">Where energy flows and consciousness awakens</p>
         
-        <!-- Contact Form -->
-        <section id="contact">
-            <div class="form-section">
-                <h2>Stay Connected</h2>
-                <p style="text-align: center; font-size: 1.2em; margin-bottom: 40px;">Join a gathering, share your experience, or simply stay in the loop.</p>
-                
-                <form name="nuts-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="form-name" value="nuts-contact">
-                    <p style="display: none;">
-                        <label>Don't fill: <input name="bot-field" /></label>
-                    </p>
-                    <input type="text" name="name" placeholder="Your name" required>
-                    <input type="email" name="email" placeholder="Your email" required>
-                    <textarea name="message" rows="5" placeholder="What draws you here? Share your story, ask about gatherings, or tell us about your solo meditation experience..."></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </section>
+        <p>We gather under open sky for synchronized meditation. Simple. Powerful. Mysterious.</p>
         
-        <!-- Footer -->
+        <div class="divider"></div>
+        
+        <p class="large">What happens when strangers meditate together beneath the cosmos?</p>
+        
+        <p>In October 2024, I brought this experience to Esalen Institute for the inaugural Ennea Explorers Club. Over 100 scientists, mystics, and seekers questioning reality itself. We meditated in synchrony under the stars.</p>
+        
+        <p><strong style="color: #FFD700;">The phenomenon showed up.</strong></p>
+        
+        <p>Now this practice flows to anyone ready to receive it. No prerequisites. No gatekeepers. Just you, the stars, and whatever emerges.</p>
+        
+        <!-- COMING SOON -->
+        <div class="coming-soon">
+            <div class="date">11/11/25</div>
+            <p><strong>Event Schedule & Calendar Launch</strong></p>
+            <p style="font-size: 1.15em; margin-top: 20px;">We're hosting experiences across California, Indiana, Colorado, and Virginia.</p>
+            <p style="font-size: 1em; color: rgba(255, 255, 255, 0.5); font-style: italic;">Full details, locations, and registration opening soon.</p>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <!-- VIDEO: ROSS COULTHART -->
+        <div class="video-section">
+            <h3>Witnessed at Esalen</h3>
+            <p class="video-description">Journalist Ross Coulthart documents the phenomenon</p>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/aX9ogv0PEug?si=Y4vfGd9SsSFdGqgY" 
+                        title="Ross Coulthart on Night Under The Stars at Esalen" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        
+        <!-- SPOTIFY -->
+        <div class="spotify">
+            <h3>Experience the Meditation</h3>
+            <p class="description">The same soundtrack from Esalen. Headphones recommended.</p>
+            <iframe data-testid="embed-iframe" 
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/playlist/4vn7cfgOzfjtlpsnC98NPi?utm_source=generator&theme=0" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <p class="large">The vision:</p>
+        
+        <p>A world where consciousness research feels like coming home. Where meditation under stars is as natural as walking in forests. Where we remember how to be present together.</p>
+        
+        <!-- FORM -->
+        <div class="form-section">
+            <h2>Stay Connected</h2>
+            <p class="form-description">Be the first to know when events launch on 11/11/25.</p>
+            <form name="nuts-contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="nuts-contact">
+                <p style="display: none;">
+                    <label>Don't fill: <input name="bot-field" /></label>
+                </p>
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <textarea name="message" rows="4" placeholder="What draws you here? (optional)"></textarea>
+                <button type="submit">Join the Journey</button>
+            </form>
+        </div>
+        
         <footer>
-            <p style="font-size: 1.1em; margin-bottom: 20px;">Part of <a href="https://thetelepathycenter.com">The Telepathy Center</a></p>
-            <p style="font-style: italic; color: #b8b0d0;">Where meditation under stars is as natural as walking in forests.</p>
-            <p style="margin-top: 40px; font-size: 0.95em;">We're building this as we go. ✦</p>
+            <p>Part of <a href="https://jordanjozak.com">Jordan Jozak</a> · <a href="https://thetelepathycenter.com">The Telepathy Center</a> · <a href="https://legacyvoices.com">Legacy Voices</a></p>
+            <p style="margin-top: 20px; font-style: italic; color: rgba(255, 255, 255, 0.4);">Sovereign · Respectful · Our Own</p>
+            <p style="margin-top: 15px; font-size: 0.85em;">nightunderthestars.com</p>
         </footer>
     </div>
-    
+
     <script>
-        // Generate starfield
-        const starfield = document.getElementById('starfield');
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starfield.appendChild(star);
+        // ULTRA PREMIUM 4K CANVAS RENDERING
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        
+        let dpr = window.devicePixelRatio || 1;
+        
+        function resizeCanvas() {
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
         }
         
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = [];
+        const particleCount = 120;
+        const connectionDistance = 180;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width / dpr;
+                this.y = Math.random() * canvas.height / dpr;
+                this.vx = (Math.random() - 0.5) * 0.3;
+                this.vy = (Math.random() - 0.5) * 0.3;
+                this.radius = Math.random() * 1.5 + 0.5;
+                this.hue = Math.random() > 0.3 ? 45 : 270;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width / dpr) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height / dpr) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
+                gradient.addColorStop(0, `hsla(${this.hue}, 70%, 60%, 0.8)`);
+                gradient.addColorStop(1, `hsla(${this.hue}, 70%, 60%, 0)`);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
             });
-        });
+
+            // Premium gradient connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        const opacity = 0.15 * (1 - distance / connectionDistance);
+                        const gradient = ctx.createLinearGradient(
+                            particles[i].x, particles[i].y,
+                            particles[j].x, particles[j].y
+                        );
+                        gradient.addColorStop(0, `rgba(138, 43, 226, ${opacity})`);
+                        gradient.addColorStop(1, `rgba(212, 175, 55, ${opacity})`);
+                        
+                        ctx.beginPath();
+                        ctx.strokeStyle = gradient;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
     </script>
 </body>
 </html>
