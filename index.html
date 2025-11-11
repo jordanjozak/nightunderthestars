@@ -3,570 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Night Under The Stars</title>
-    <meta name="description" content="Created by Jordan Jozak. Synchronized meditation under the stars. Events across CA, IN, CO, and VA.">
+    <title>Follow the White Rabbit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
         }
-        
+
         body {
-            font-family: 'Crimson Text', serif;
-            background: #0a0a1a;
-            color: #e8e4f0;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-        
-        /* ULTRA PREMIUM CANVAS BACKGROUND */
-        #canvas-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-        }
-        
-        /* GRADIENT MESH OVERLAY */
-        .gradient-mesh {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 20%, rgba(138, 43, 226, 0.15), transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.12), transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.08), transparent 60%);
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.7;
-            animation: meshPulse 20s ease-in-out infinite;
-        }
-        
-        @keyframes meshPulse {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 0.9; }
-        }
-        
-        /* WEB 3.0 CRYSTALLINE STRUCTURE */
-        .crystalline-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(45deg, transparent 48%, rgba(138, 43, 226, 0.03) 49%, rgba(138, 43, 226, 0.03) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(212, 175, 55, 0.03) 49%, rgba(212, 175, 55, 0.03) 51%, transparent 52%);
-            background-size: 100px 100px;
-            pointer-events: none;
-            z-index: 2;
-            animation: crystallineShift 30s linear infinite;
-        }
-        
-        @keyframes crystallineShift {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 100px 100px, -100px 100px; }
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 40px 80px;
-            position: relative;
-            z-index: 10;
-        }
-        
-        /* BADGE */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(138, 43, 226, 0.15);
-            border: 1px solid rgba(138, 43, 226, 0.3);
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #b794f6;
-            margin-bottom: 40px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .badge-dot {
-            width: 6px;
-            height: 6px;
-            background: #8a2be2;
-            border-radius: 50%;
-            animation: badgePulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes badgePulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        h1 {
-            font-size: clamp(3rem, 8vw, 4.5rem);
-            font-weight: 400;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-            color: #fff;
-            line-height: 1.1;
-        }
-        
-        .subtitle {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 60px;
-            font-weight: 300;
-            font-style: italic;
-        }
-        
-        p {
-            font-size: 1.35em;
-            color: rgba(232, 228, 240, 0.8);
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-        
-        .large {
-            font-size: 1.65em;
-            color: #fff;
-            margin: 60px 0 30px;
-            font-weight: 600;
-            font-style: italic;
-        }
-        
-        .divider {
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
-            margin: 60px auto;
-        }
-        
-        /* COMING SOON BOX */
-        .coming-soon {
-            margin: 70px 0;
-            padding: 50px 40px;
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(212, 175, 55, 0.08));
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            text-align: center;
-            backdrop-filter: blur(20px);
-        }
-        
-        .coming-soon .date {
-            font-size: 3em;
-            font-weight: 600;
-            color: #FFD700;
-            margin-bottom: 20px;
-            letter-spacing: 3px;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-        
-        .coming-soon p {
-            font-size: 1.3em;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 15px;
-        }
-        
-        /* VIDEO SECTION */
-        .video-section {
-            margin: 70px 0;
-        }
-        
-        .video-section h3 {
-            font-size: 1.75em;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 400;
-            color: #fff;
-        }
-        
-        .video-description {
-            text-align: center;
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 30px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(ellipse at center, #0a0a1a 0%, #000000 100%);
+            color: #ffffff;
             overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 20px 60px rgba(138, 43, 226, 0.2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Vignette effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.8);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        #stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        .star.small {
+            width: 1px;
+            height: 1px;
+        }
+
+        .star.medium {
+            width: 2px;
+            height: 2px;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .star.large {
+            width: 3px;
+            height: 3px;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Shooting stars */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 3s ease-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes shoot {
+            0% { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+            100% { 
+                opacity: 0;
+                transform: translateX(-300px) translateY(300px);
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* Elegant glow circle behind rabbit */
+        .glow-circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            animation: pulse-glow 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { transform: translate(-50%, -60%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -60%) scale(1.1); opacity: 0.8; }
+        }
+
+        .rabbit-container {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .rabbit {
+            font-size: 140px;
+            display: inline-block;
+            animation: elegant-float 5s ease-in-out infinite;
+            filter: drop-shadow(0 10px 40px rgba(255, 255, 255, 0.15));
+            opacity: 0;
+            animation: elegant-float 5s ease-in-out infinite, fade-in-up 2s ease-out 0.3s forwards;
+        }
+
+        @keyframes elegant-float {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes fade-in-up {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5em;
+            font-weight: 300;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fade-in-up 2s ease-out 0.8s forwards;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+
+        .message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fade-in-up 2s ease-out 1.3s forwards;
+            color: #d0d0d0;
+            font-style: italic;
+        }
+
+        .portal-link {
+            display: inline-block;
+            padding: 18px 60px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+            font-weight: 300;
+            text-decoration: none;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fade-in-up 2s ease-out 1.8s forwards;
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.01);
             backdrop-filter: blur(10px);
         }
-        
-        .video-wrapper iframe {
+
+        .portal-link::before {
+            content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
         }
-        
-        /* SPOTIFY SECTION */
-        .spotify {
-            margin: 70px 0;
-            padding: 50px 40px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(20px);
+
+        .portal-link:hover::before {
+            left: 100%;
         }
-        
-        .spotify h3 {
-            font-size: 1.75em;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 400;
-            color: #fff;
+
+        .portal-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
-        
-        .spotify .description {
-            text-align: center;
-            font-size: 1.1em;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 30px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        /* FORM */
-        .form-section {
-            margin: 70px 0;
-            padding: 50px 40px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-        }
-        
-        .form-section h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 400;
-            color: #fff;
-        }
-        
-        .form-section .form-description {
-            text-align: center;
-            margin-bottom: 35px;
-            font-size: 1.15em;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 14px 18px;
-            margin-bottom: 16px;
+
+        .portal-link:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.03);
+            transform: translateY(-3px);
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            border-radius: 6px;
-            font-family: 'Inter', sans-serif;
-            font-size: 1em;
-            transition: all 0.3s ease;
         }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: rgba(212, 175, 55, 0.5);
-            background: rgba(255, 255, 255, 0.05);
+
+        .portal-link:hover::after {
+            opacity: 1;
         }
-        
-        input::placeholder, textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+
+        .portal-link span {
+            position: relative;
+            z-index: 1;
         }
-        
-        button {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #6a11cb, #8a2be2);
-            color: #fff;
-            border: 1px solid rgba(138, 43, 226, 0.5);
-            border-radius: 50px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+
+        /* Particle effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-particle 20s infinite ease-in-out;
         }
-        
-        button:hover {
-            background: linear-gradient(135deg, #8a2be2, #6a11cb);
-            box-shadow: 0 6px 30px rgba(138, 43, 226, 0.5);
-            transform: translateY(-2px);
+
+        @keyframes float-particle {
+            0%, 100% { transform: translate(0, 0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            50% { transform: translate(100px, -300px); }
         }
-        
-        /* FOOTER */
-        footer {
-            margin-top: 100px;
-            padding-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: rgba(232, 228, 240, 0.5);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9em;
-        }
-        
-        footer a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: #FFD700;
-            border-bottom-color: rgba(255, 215, 0, 0.5);
-        }
-        
+
         @media (max-width: 768px) {
-            .container {
-                padding: 80px 30px 60px;
+            .rabbit {
+                font-size: 100px;
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.2em;
+                letter-spacing: 4px;
             }
             
-            .coming-soon .date {
-                font-size: 2.5em;
+            .message {
+                font-size: 1.2em;
+                letter-spacing: 2px;
+            }
+
+            .portal-link {
+                padding: 15px 40px;
+                font-size: 0.8em;
+                letter-spacing: 3px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+                letter-spacing: 3px;
             }
             
-            .spotify, .form-section {
-                padding: 40px 30px;
+            .rabbit {
+                font-size: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ULTRA PREMIUM CANVAS -->
-    <canvas id="canvas-bg"></canvas>
-    <div class="gradient-mesh"></div>
-    <div class="crystalline-overlay"></div>
+    <div id="stars"></div>
     
     <div class="container">
-        <div class="badge">
-            <div class="badge-dot"></div>
-            Created by Jordan Jozak
+        <div class="glow-circle"></div>
+        <div class="rabbit-container">
+            <div class="rabbit">🐇</div>
         </div>
-        
-        <h1>Night Under<br>The Stars</h1>
-        
-        <p class="subtitle">Where energy flows and consciousness awakens</p>
-        
-        <p>We gather under open sky for synchronized meditation. Simple. Powerful. Mysterious.</p>
-        
-        <div class="divider"></div>
-        
-        <p class="large">What happens when strangers meditate together beneath the cosmos?</p>
-        
-        <p>In October 2024, I brought this experience to Esalen Institute for the inaugural Ennea Explorers Club. Over 100 scientists, mystics, and seekers questioning reality itself. We meditated in synchrony under the stars.</p>
-        
-        <p><strong style="color: #FFD700;">The phenomenon showed up.</strong></p>
-        
-        <p>Now this practice flows to anyone ready to receive it. No prerequisites. No gatekeepers. Just you, the stars, and whatever emerges.</p>
-        
-        <!-- COMING SOON -->
-        <div class="coming-soon">
-            <div class="date">11/11/25</div>
-            <p><strong>Event Schedule & Calendar Launch</strong></p>
-            <p style="font-size: 1.15em; margin-top: 20px;">We're hosting experiences across California, Indiana, Colorado, and Virginia.</p>
-            <p style="font-size: 1em; color: rgba(255, 255, 255, 0.5); font-style: italic;">Full details, locations, and registration opening soon.</p>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <!-- VIDEO: ROSS COULTHART -->
-        <div class="video-section">
-            <h3>Witnessed at Esalen</h3>
-            <p class="video-description">Journalist Ross Coulthart documents the phenomenon</p>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/H-guzG-3wF0?start=215" 
-                        title="Ross Coulthart on Esalen Institute - Orb Summoning Experience" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-        
-        <!-- SPOTIFY -->
-        <div class="spotify">
-            <h3>Experience the Meditation</h3>
-            <p class="description">The same soundtrack from Esalen. Headphones recommended.</p>
-            <iframe data-testid="embed-iframe" 
-                    style="border-radius:12px" 
-                    src="https://open.spotify.com/embed/playlist/4vn7cfgOzfjtlpsnC98NPi?utm_source=generator&theme=0" 
-                    width="100%" 
-                    height="352" 
-                    frameBorder="0" 
-                    allowfullscreen="" 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy">
-            </iframe>
-        </div>
-        
-        <div class="divider"></div>
-        
-        <p class="large">The vision:</p>
-        
-        <p>A world where consciousness research feels like coming home. Where meditation under stars is as natural as walking in forests. Where we remember how to be present together.</p>
-        
-        <!-- FORM -->
-        <div class="form-section">
-            <h2>Stay Connected</h2>
-            <p class="form-description">Be the first to know when events launch on 11/11/25.</p>
-            <form name="nuts-contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="form-name" value="nuts-contact">
-                <p style="display: none;">
-                    <label>Don't fill: <input name="bot-field" /></label>
-                </p>
-                <input type="text" name="name" placeholder="Your name" required>
-                <input type="email" name="email" placeholder="Your email" required>
-                <textarea name="message" rows="4" placeholder="What draws you here? (optional)"></textarea>
-                <button type="submit">Join the Journey</button>
-            </form>
-        </div>
-        
-        <footer>
-            <p>Part of <a href="https://jordanjozak.com">Jordan Jozak</a> · <a href="https://thetelepathycenter.com">The Telepathy Center</a> · <a href="https://www.thelegacyvoices.com">Legacy Voices</a></p>
-            <p style="margin-top: 15px; font-size: 0.85em;">nightunderthestars.com</p>
-        </footer>
+        <h1>Follow the White Rabbit</h1>
+        <p class="message">The journey continues...</p>
+        <a href="https://www.thetelepathycenter.com" class="portal-link">
+            <span>Enter</span>
+        </a>
     </div>
 
     <script>
-        // ULTRA PREMIUM 4K CANVAS RENDERING
-        const canvas = document.getElementById('canvas-bg');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        // Create enhanced starfield with varying sizes
+        const starsContainer = document.getElementById('stars');
+        const numberOfStars = 300;
+
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // Vary star sizes
+            const size = Math.random();
+            if (size > 0.95) {
+                star.classList.add('large');
+            } else if (size > 0.85) {
+                star.classList.add('medium');
+            } else {
+                star.classList.add('small');
+            }
+            
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            star.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            starsContainer.appendChild(star);
         }
-        
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
 
-        const particles = [];
-        const particleCount = 150;
-        const connectionDistance = 180;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-                this.radius = Math.random() * 1.5 + 0.5;
-                this.hue = Math.random() > 0.3 ? 45 : 270;
-                this.twinkleSpeed = Math.random() * 0.02 + 0.01;
-                this.twinklePhase = Math.random() * Math.PI * 2;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.twinklePhase += this.twinkleSpeed;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-
-            draw() {
-                const twinkle = (Math.sin(this.twinklePhase) + 1) / 2;
-                const alpha = 0.3 + (twinkle * 0.7);
+        // Add shooting stars
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                shootingStar.style.left = Math.random() * 100 + '%';
+                shootingStar.style.top = Math.random() * 50 + '%';
+                shootingStar.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                starsContainer.appendChild(shootingStar);
                 
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4);
-                gradient.addColorStop(0, `hsla(${this.hue}, 70%, 60%, ${alpha})`);
-                gradient.addColorStop(0.5, `hsla(${this.hue}, 70%, 60%, ${alpha * 0.3})`);
-                gradient.addColorStop(1, `hsla(${this.hue}, 70%, 60%, 0)`);
-                ctx.fillStyle = gradient;
-                ctx.fill();
-                
-                // Star glimmer effect
-                if (twinkle > 0.8) {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius * 0.5, 0, Math.PI * 2);
-                    ctx.fillStyle = `hsla(${this.hue}, 100%, 90%, ${(twinkle - 0.8) * 2})`;
-                    ctx.fill();
-                }
+                setTimeout(() => shootingStar.remove(), 3000);
             }
+        }, 3000);
+
+        // Add floating particles
+        const container = document.querySelector('.container');
+        for (let i = 0; i < 5; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+            container.appendChild(particle);
         }
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
-            });
-
-            // Premium gradient connections
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        const opacity = 0.15 * (1 - distance / connectionDistance);
-                        const gradient = ctx.createLinearGradient(
-                            particles[i].x, particles[i].y,
-                            particles[j].x, particles[j].y
-                        );
-                        gradient.addColorStop(0, `rgba(138, 43, 226, ${opacity})`);
-                        gradient.addColorStop(1, `rgba(212, 175, 55, ${opacity})`);
-                        
-                        ctx.beginPath();
-                        ctx.strokeStyle = gradient;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-
-            requestAnimationFrame(animate);
-        }
-
-        animate();
+        // Subtle parallax effect
+        const rabbit = document.querySelector('.rabbit');
+        const glowCircle = document.querySelector('.glow-circle');
         
-        // Re-initialize particles on resize to cover full screen
-        window.addEventListener('resize', () => {
-            particles.length = 0;
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 15;
+            const y = (e.clientY / window.innerHeight - 0.5) * 15;
+            
+            rabbit.style.transform = `translate(${x}px, ${y}px)`;
+            glowCircle.style.transform = `translate(-50%, -60%) translate(${x * 0.5}px, ${y * 0.5}px)`;
         });
     </script>
 </body>
