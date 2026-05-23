@@ -1,0 +1,19 @@
+# Local review/intake folder — never commit
+_inbox/
+
+# Source brand assets (production-optimized versions live in /assets/)
+/NightUndertheStars/
+/NUTS*.png
+/NUTS*.svg
+/NightUnderTheStars*.jpg
+/NightUnderTheStars*.png
+/UNDERSTARSV7NUTS.pdf
+
+# Original (un-brightened) backups of optimized images
+/assets/img/*-original.jpg
+
+# Dev artifacts (visual-reviewer screenshots etc.)
+/prototypes/
+
+# macOS
+.DS_Store
