@@ -163,26 +163,43 @@
     animation: rise 1.6s ease-out 0.7s forwards;
     max-width: 720px;
   }
-  .hero-cta {
-    display: inline-block;
-    padding: 15px 46px;
-    border: 1px solid var(--gold-soft);
-    background: rgba(11,11,18,0.35);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+  .hero-scroll {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    border: 1px solid var(--gold-faint);
+    border-radius: 50%;
+    color: var(--gold-bright);
+    font-size: 18px;
+    background: rgba(11,11,18,0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: drift 3.2s ease-in-out infinite;
+    transition: border-color 0.4s ease;
+  }
+  .hero-scroll:hover { border-color: var(--gold-soft); }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(7px); }
+  }
+
+  /* slim CTA band directly under the hero */
+  .cta-band {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding: 26px 24px;
+    background: linear-gradient(180deg, var(--bg), var(--bg-soft));
+    border-bottom: 1px solid var(--rule);
     font-size: 10.5px;
     font-weight: 400;
     letter-spacing: 0.4em;
     text-transform: uppercase;
-    color: var(--ink);
-    transition: all 0.5s ease;
+    color: var(--gold-bright);
+    transition: letter-spacing 0.5s ease, color 0.4s ease;
   }
-  .hero-cta:hover {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--bg);
-    letter-spacing: 0.44em;
-  }
+  .cta-band:hover { letter-spacing: 0.46em; color: var(--ink); }
 
   @keyframes rise {
     to { opacity: 1; transform: translateY(0); }
@@ -816,9 +833,12 @@
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <h1 class="visually-hidden">Night Under the Stars &mdash; Seeking the Phenomenon Within</h1>
-    <a href="#join" class="hero-cta">Hear About Upcoming Nights</a>
+    <a href="#welcome" class="hero-scroll" aria-label="Scroll down">&#8595;</a>
   </div>
 </section>
+
+<!-- ===== CTA BAND ===== -->
+<a class="cta-band" href="#join" id="welcome">Hear About Upcoming Nights &nbsp;&#8594;</a>
 
 <!-- ===== OPENING QUOTE ===== -->
 <section class="quote-section">
@@ -947,16 +967,17 @@
 
     <div class="join-card">
       <p class="join-prompt">
-        Nights are small and announced quietly. Leave your email and you&rsquo;ll hear first &mdash; nothing else, no noise, just the next sky.
+        Nights are small and announced quietly. Leave your email and you&rsquo;ll hear first &mdash; and if there&rsquo;s something you want to say or ask, this same window reaches Jordan directly.
       </p>
       <form class="join-form" name="upcoming-nights" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
         <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
         <input class="join-input" type="text" name="name" placeholder="Your name (optional)" autocomplete="name" />
         <input class="join-input" type="email" name="email" placeholder="Your email" autocomplete="email" required />
-        <button class="join-submit" type="submit">Keep Me Posted</button>
+        <textarea class="join-input" name="message" rows="3" placeholder="Anything you&rsquo;d like to share or ask (optional)" style="resize:none; text-align:left; line-height:1.6;"></textarea>
+        <button class="join-submit" type="submit">Send</button>
       </form>
       <p class="join-note">
-        One email when a night opens. That&rsquo;s the whole arrangement.
+        One email when a night opens &mdash; that&rsquo;s the whole arrangement. Messages are read by a person, not a system.
       </p>
     </div>
   </div>
@@ -1022,7 +1043,7 @@
 
     <p class="reserve-quiet">
       Lost or unsure of your code?<br/>
-      Reach Jordan directly at <a href="mailto:Jordan@NightUnderTheStars.com">Jordan@NightUnderTheStars.com</a>.
+      <a href="#join">Use the window above</a> and mention your invitation &mdash; it reaches Jordan directly.
     </p>
   </div>
 </section>
@@ -1031,7 +1052,7 @@
 <footer>
   <div class="footer-mark">Night Under the Stars</div>
   <div class="footer-meta">
-    Jordan@NightUnderTheStars.com
+    <a href="#join">Get in touch</a>
   </div>
 </footer>
 
