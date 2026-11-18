@@ -12,13 +12,16 @@ gatherings in different cities, at an affordable price, sold openly (no invitati
 
 **The site** is four pages that share `assets/css/site.css` and `assets/js/site.js`:
 Home (`index.html`), Events (`events/`), About (`about/`) and Contact (`contact/`).
-The header stays on screen on every page and its button, "Book an Experience", goes to Events.
+The header stays on screen on every page and its button, "Join an Event", goes to Events.
 
 **The schedule is one file: `assets/js/nights.js`.** `NIGHTS` holds one entry per night
 (`id`, `city`, `region`, `date` as YYYY-MM-DD, `detail`, `price`, `link`, `soldOut`). Home shows
 the next three and Events shows all of them, sorted by date; each night drops off by itself the
-day after it happens. With no nights, both pages say "The first nights are being set now" and
-point to Contact. `PLANNED` is the list of city names shown on Events under "Where we're headed".
+day after it happens. With no nights, the calendar section is hidden on both pages.
+`PLANNED` is the list of city names shown on Events under "Where we're headed"; a city drops off
+it by itself once it has an upcoming night.
+Each night holds 20 seats and confirms once 12 are reserved; if it does not confirm, everyone is
+refunded in full (Jordan, Nov 18). Stripe keeps its processing fee on a refund.
 Add a night only once its city, date and price are confirmed.
 
 **Contact.** The form on `contact/` is the Netlify form named `contact` (name, email, city,

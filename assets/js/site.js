@@ -18,36 +18,37 @@
   }
   function fmt(d, opts) { return d.toLocaleDateString('en-US', opts); }
 
-  // Fill every [data-nights] block. data-limit="3" shows only the next three.
-  function renderNights(nights) {
+  function upcomingOf(nights) {
     var today = new Date(); today.setHours(0, 0, 0, 0);
-    var upcoming = (nights || [])
+    return (nights || [])
       .filter(function (n) { return new Date(n.date + 'T23:59:59') >= today; })
       .sort(function (a, b) { return a.date.localeCompare(b.date); });
+  }
+
+  // Fill every [data-nights] block, soonest first. data-limit="3" shows only the next three.
+  // A section marked data-nights-section stays hidden while there is nothing to list.
+  function renderNights(nights) {
+    var upcoming = upcomingOf(nights);
 
     document.querySelectorAll('[data-nights]').forEach(function (block) {
       var list = block.querySelector('.nights-list');
-      var empty = block.querySelector('.nights-empty');
+      var section = block.closest('[data-nights-section]');
       var limit = parseInt(block.getAttribute('data-limit') || '0', 10);
       var shown = limit ? upcoming.slice(0, limit) : upcoming;
       list.textContent = '';
-      list.hidden = !shown.length;
-      empty.hidden = !!shown.length;
+      if (section) section.hidden = !shown.length;
 
       shown.forEach(function (n) {
         var d = new Date(n.date + 'T12:00:00');
         var row = el('div', 'night');
 
-        var when = el('div', 'night-date');
-        when.appendChild(el('span', 'night-weekday', fmt(d, { weekday: 'long' })));
-        when.appendChild(el('span', 'night-day', fmt(d, { month: 'long', day: 'numeric' })));
-        when.appendChild(el('span', 'night-year', String(d.getFullYear())));
-        row.appendChild(when);
-
-        var where = el('div', 'night-where');
-        where.appendChild(el('div', 'night-city', n.region ? n.city + ', ' + n.region : n.city));
-        if (n.detail) where.appendChild(el('div', 'night-detail', n.detail));
-        row.appendChild(where);
+        var main = el('div', 'night-main');
+        main.appendChild(el('div', 'night-when', fmt(d, { weekday: 'long' }) + ' · ' + fmt(d, { month: 'long', day: 'numeric', year: 'numeric' })));
+        var city = el('div', 'night-city', n.city);
+        if (n.region) { city.appendChild(document.createTextNode(' ')); city.appendChild(el('span', 'night-region', n.region)); }
+        main.appendChild(city);
+        if (n.detail) main.appendChild(el('div', 'night-detail', n.detail));
+        row.appendChild(main);
 
         var act = el('div', 'night-action');
         var a;
@@ -68,20 +69,26 @@
         list.appendChild(row);
       });
     });
+    renderPlanned(data.PLANNED, upcoming);
   }
 
-  function renderPlanned(cities) {
+  // Cities with no date yet. A city drops off this list once it has an upcoming night.
+  function renderPlanned(cities, upcoming) {
     var box = document.getElementById('planned-cities');
     if (!box) return;
     var section = document.getElementById('planned');
+    var dated = (upcoming || []).map(function (n) { return String(n.city).toLowerCase(); });
+    var left = (cities || []).filter(function (c) {
+      var name = c.toLowerCase();
+      return !dated.some(function (d) { return name.indexOf(d) === 0 || d.indexOf(name) === 0; });
+    });
     box.textContent = '';
-    (cities || []).forEach(function (c) { box.appendChild(el('span', 'city', c)); });
-    if (section) section.hidden = !(cities && cities.length);
+    left.forEach(function (c) { box.appendChild(el('span', 'city', c)); });
+    if (section) section.hidden = !left.length;
   }
 
   window.renderNights = renderNights;
   renderNights(data.NIGHTS);
-  renderPlanned(data.PLANNED);
 
   // starfield
   var sf = document.getElementById('starfield');
