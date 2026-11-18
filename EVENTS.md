@@ -20,8 +20,9 @@ the next three and Events shows all of them, sorted by date; each night drops of
 day after it happens. With no nights, the calendar section is hidden on both pages.
 `PLANNED` is the list of city names shown on Events under "Where we're headed"; a city drops off
 it by itself once it has an upcoming night.
-Each night holds 20 seats and confirms once 12 are reserved; if it does not confirm, everyone is
-refunded in full (Jordan, Nov 18). Stripe keeps its processing fee on a refund.
+Each night holds 20 seats, paid in full at booking, and confirms a week ahead once 12 are reserved;
+if it does not confirm, everyone is refunded in full. The location and details are emailed a week
+ahead, in the same email that confirms the night (Jordan, Nov 18). Stripe keeps its processing fee on a refund.
 Add a night only once its city, date and price are confirmed.
 
 **Contact.** The form on `contact/` is the Netlify form named `contact` (name, email, city,

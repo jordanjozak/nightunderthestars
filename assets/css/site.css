@@ -360,7 +360,7 @@ h2.left { text-align: left; }
 
 /* ===== NIGHTS LIST ===== */
 .nights-card {
-  max-width: 860px;
+  max-width: 940px;
   margin: 0 auto;
   padding: 6px 44px;
   border: 1px solid var(--gold-faint);

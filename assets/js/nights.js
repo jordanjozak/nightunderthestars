@@ -8,7 +8,7 @@
 //     city:    'City',
 //     region:  'State',
 //     date:    '2026-12-05',                  // YYYY-MM-DD, the evening it begins
-//     detail:  'Arrive at dusk · location sent when you reserve',
+//     detail:  'Arrive at dusk · location sent a week ahead',
 //     price:   '$000',
 //     link:    'https://buy.stripe.com/...',  // that night's Stripe Payment Link; '' shows "Opening soon"
 //     soldOut: false                          // true shows "Full" and points to Contact
