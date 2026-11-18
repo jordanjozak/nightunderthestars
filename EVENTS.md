@@ -10,11 +10,25 @@ Mirror any active event into the `EVENTS` JS block in `index.html`.
 Jordan brought Night Under the Stars back on 2026-11-18 as a personal project: single-night
 gatherings in different cities, at an affordable price, sold openly (no invitation code).
 
-**The page.** `index.html` lists nights from the `NIGHTS` array at the bottom of the file.
-One entry per night: `id`, `city`, `region`, `date` (YYYY-MM-DD), `detail`, `price`, `link`,
-`soldOut`. Nights sort by date and drop off the page the day after they happen. An empty list
-shows "The first nights are being set now" and points to the list. Add a night only once its
-city, date and price are confirmed.
+**The site** is four pages that share `assets/css/site.css` and `assets/js/site.js`:
+Home (`index.html`), Events (`events/`), About (`about/`) and Contact (`contact/`).
+The header stays on screen on every page and its button, "Book an Experience", goes to Events.
+
+**The schedule is one file: `assets/js/nights.js`.** `NIGHTS` holds one entry per night
+(`id`, `city`, `region`, `date` as YYYY-MM-DD, `detail`, `price`, `link`, `soldOut`). Home shows
+the next three and Events shows all of them, sorted by date; each night drops off by itself the
+day after it happens. With no nights, both pages say "The first nights are being set now" and
+point to Contact. `PLANNED` is the list of city names shown on Events under "Where we're headed".
+Add a night only once its city, date and price are confirmed.
+
+**Contact.** The form on `contact/` is the Netlify form named `contact` (name, email, city,
+message, and a box to hear when a night opens nearby). Every page also shows
+hello@nightunderthestars.com. The June forms (`upcoming-nights`, `nuts-contact`) keep their
+past submissions in Netlify.
+
+To look at the site on this Mac: `python3 -m http.server 4173` in this folder, then
+http://localhost:4173 (the pages use paths from the site root, so opening the files directly
+shows them unstyled).
 
 **The Stripe link for a night** (made in Jordan's own Stripe account, not The Telepathy Center's):
 - One product per night, named "Night Under the Stars · City · Month Day, Year", priced per seat.

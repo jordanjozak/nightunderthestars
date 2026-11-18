@@ -1,27 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Night Under the Stars — You're on the list</title>
+<title>Thank you — Night Under the Stars</title>
+<meta name="description" content="Your message is on its way." />
+<link rel="canonical" href="https://nightunderthestars.com/thanks.html" />
+<meta property="og:title" content="Thank you — Night Under the Stars" />
+<meta property="og:description" content="Your message is on its way." />
+<meta property="og:image" content="https://nightunderthestars.com/assets/img/hero.jpg" />
+<meta property="og:url" content="https://nightunderthestars.com/thanks.html" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="robots" content="noindex" />
-<link rel="icon" type="image/svg+xml" href="assets/logo/star.svg" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
-<style>
-  :root { --bg:#0b0b12; --ink:#f1eee6; --ink-soft:#c5c1b5; --ink-mute:#807b6e; --gold:#b08c55; --gold-bright:#cfa96e; --gold-faint:rgba(176,140,85,.2); }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{ font-family:'Montserrat',sans-serif; font-weight:300; background:var(--bg); color:var(--ink); min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 28px; }
-  .star{ height:64px; width:auto; margin-bottom:36px; filter:brightness(1.7) drop-shadow(0 0 18px rgba(176,140,85,.4)); }
-  h1{ font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(30px,5vw,44px); letter-spacing:.05em; margin-bottom:20px; }
-  p{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; line-height:1.65; color:var(--ink-soft); max-width:440px; }
-  a{ display:inline-block; margin-top:44px; padding:14px 40px; border:1px solid var(--gold-faint); color:var(--ink-soft); font-size:10.5px; letter-spacing:.36em; text-transform:uppercase; text-decoration:none; transition:all .4s ease; }
-  a:hover{ border-color:var(--gold); color:var(--ink); }
-</style>
+<script>document.documentElement.className = 'js';</script>
+<link rel="icon" type="image/svg+xml" href="/assets/logo/star.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
-  <img class="star" src="assets/logo/star.svg" alt="" />
-  <h1>You&rsquo;re on the list.</h1>
-  <p>When the next night opens, you&rsquo;ll be the first to know. Until then &mdash; keep looking up.</p>
-  <a href="/">Return</a>
+
+<div class="starfield" id="starfield" aria-hidden="true"></div>
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Night Under the Stars, home">
+    <img src="/assets/logo/nuts-horiz.svg" alt="Night Under the Stars" />
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/events/">Events</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <a class="btn btn-gold header-cta" href="/events/">Book an Experience <span class="arrow" aria-hidden="true">&rarr;</span></a>
+</header>
+
+<main>
+
+<section class="section" style="min-height:58vh; display:flex; align-items:center">
+  <div class="wrap narrow center">
+    <img src="/assets/logo/star.svg" alt="" style="height:56px; margin:0 auto 30px; filter:brightness(1.7) drop-shadow(0 0 18px rgba(176,140,85,.4))" />
+    <h2>Thank you.</h2>
+    <div class="prose center" style="text-align:center">
+      <p>Your note is on its way to Jordan. Until the next night opens, keep looking up.</p>
+    </div>
+    <div class="section-cta">
+      <a class="btn btn-ghost" href="/">Return Home <span class="arrow" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-mark">Night Under the Stars</div>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/events/">Events</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <div class="footer-meta">Seeking the Phenomenon Within</div>
+</footer>
+
+<script src="/assets/js/nights.js"></script>
+<script src="/assets/js/site.js"></script>
 </body>
 </html>

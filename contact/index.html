@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Night Under the Stars</title>
+<meta name="description" content="Reach out to Night Under the Stars with a question, or tell us the city you'd like a night to come to." />
+<link rel="canonical" href="https://nightunderthestars.com/contact/" />
+<meta property="og:title" content="Contact — Night Under the Stars" />
+<meta property="og:description" content="Reach out to Night Under the Stars with a question, or tell us the city you'd like a night to come to." />
+<meta property="og:image" content="https://nightunderthestars.com/assets/img/hero.jpg" />
+<meta property="og:url" content="https://nightunderthestars.com/contact/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="index,follow" />
+<script>document.documentElement.className = 'js';</script>
+<link rel="icon" type="image/svg+xml" href="/assets/logo/star.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/site.css" />
+</head>
+<body>
+
+<div class="starfield" id="starfield" aria-hidden="true"></div>
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Night Under the Stars, home">
+    <img src="/assets/logo/nuts-horiz.svg" alt="Night Under the Stars" />
+  </a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="/">Home</a>
+    <a href="/events/">Events</a>
+    <a href="/about/">About</a>
+    <a href="/contact/" aria-current="page">Contact</a>
+  </nav>
+  <a class="btn btn-gold header-cta" href="/events/">Book an Experience <span class="arrow" aria-hidden="true">&rarr;</span></a>
+</header>
+
+<main>
+
+<section class="page-head">
+  <div class="eyebrow">Contact</div>
+  <h1>Reach out.</h1>
+  <p class="sub">A question about a night, a city you&rsquo;d like us to come to, or anything else.</p>
+</section>
+
+<section class="section tight">
+  <div class="wrap reveal">
+    <div class="contact-card">
+      <form class="form" name="contact" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
+        <p hidden><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
+        <label class="visually-hidden" for="c-name">Your name</label>
+        <input class="input" id="c-name" type="text" name="name" placeholder="Your name" autocomplete="name" />
+        <label class="visually-hidden" for="c-email">Your email</label>
+        <input class="input" id="c-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+        <label class="visually-hidden" for="c-city">Your city (optional)</label>
+        <input class="input" id="c-city" type="text" name="city" placeholder="Your city (optional)" autocomplete="address-level2" />
+        <label class="visually-hidden" for="c-message">Your message</label>
+        <textarea class="input" id="c-message" name="message" placeholder="Your message"></textarea>
+        <label class="check"><input type="checkbox" name="notify" value="yes" /> <span>Let me know when a night opens near me.</span></label>
+        <button class="btn btn-gold" type="submit">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
+      </form>
+      <p class="form-note">
+        Or write directly to <a href="mailto:hello@nightunderthestars.com">hello@nightunderthestars.com</a>.<br/>
+        Messages are read by a person, not a system.
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-mark">Night Under the Stars</div>
+  <nav class="footer-nav" aria-label="Footer">
+    <a href="/">Home</a>
+    <a href="/events/">Events</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <div class="footer-meta">Seeking the Phenomenon Within</div>
+</footer>
+
+<script src="/assets/js/nights.js"></script>
+<script src="/assets/js/site.js"></script>
+</body>
+</html>
