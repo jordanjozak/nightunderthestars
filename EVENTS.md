@@ -5,7 +5,39 @@ Mirror any active event into the `EVENTS` JS block in `index.html`.
 
 ---
 
-## Live Events
+## Single nights (from November 2026)
+
+Jordan brought Night Under the Stars back on 2026-11-18 as a personal project: single-night
+gatherings in different cities, at an affordable price, sold openly (no invitation code).
+
+**The page.** `index.html` lists nights from the `NIGHTS` array at the bottom of the file.
+One entry per night: `id`, `city`, `region`, `date` (YYYY-MM-DD), `detail`, `price`, `link`,
+`soldOut`. Nights sort by date and drop off the page the day after they happen. An empty list
+shows "The first nights are being set now" and points to the list. Add a night only once its
+city, date and price are confirmed.
+
+**The Stripe link for a night** (made in Jordan's own Stripe account, not The Telepathy Center's):
+- One product per night, named "Night Under the Stars · City · Month Day, Year", priced per seat.
+- Quantity adjustable, so two people can come on one checkout (suggested: 1 to 4).
+- Collect name, email and phone.
+- After payment, send people to `https://nightunderthestars.com/reserved.html` (not built yet) or back to the home page.
+- **Seat limit:** a Payment Link can limit the number of *checkouts*, not the number of *seats*.
+  With adjustable quantity, a limit of 30 checkouts can sell more than 30 seats. Either fix the
+  quantity at 1 and set the limit to the seat count, or set the limit below the seat count and
+  turn the link off by hand (`soldOut: true` on the page) when the night is full.
+- The page adds the night's `id` to the link as `client_reference_id`, so each payment in Stripe
+  shows which night it was for.
+
+**Still to settle before the first night is listed:** cities and dates, the price, the size of
+the circle, a refund line sized for a single evening (the policy below was written for the
+$3,500 weekend), and whether a release is signed at checkout or at the door.
+
+The sections below are the June 2026 weekend ledger, kept as the record. The invitation-code
+gate and the Hudson Valley listing were taken off the page in this change (git keeps them).
+
+---
+
+## Live Events (June 2026 ledger)
 
 ### Hudson Valley · June 2026
 - **Code:** `UNDERTHESKY`

@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Night Under the Stars — Seeking the Phenomenon Within</title>
-<meta name="description" content="Small, intentional gatherings under dark skies — stillness, contact practice, and a long slow night beneath the open sky. Hosted by Jordan Jozak." />
+<meta name="description" content="Single nights under dark skies, city by city — stillness, contact practice, and a long slow evening beneath the open sky. Hosted by Jordan Jozak." />
 <meta property="og:title" content="Night Under the Stars" />
-<meta property="og:description" content="Seeking the Phenomenon Within. Small gatherings under dark skies, hosted by Jordan Jozak." />
-<meta property="og:image" content="assets/img/hero.jpg" />
+<meta property="og:description" content="Seeking the Phenomenon Within. Single nights under dark skies, city by city, hosted by Jordan Jozak." />
+<meta property="og:image" content="https://nightunderthestars.com/assets/img/hero.jpg" />
+<meta property="og:url" content="https://nightunderthestars.com/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://nightunderthestars.com/" />
 <meta name="robots" content="index,follow" />
 
+<script>document.documentElement.className = 'js';</script>
 <link rel="icon" type="image/svg+xml" href="assets/logo/star.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,8 +25,8 @@
     --bg: #0b0b12;
     --bg-soft: #12121b;
     --ink: #f1eee6;
-    --ink-soft: #c5c1b5;
-    --ink-mute: #807b6e;
+    --ink-soft: #d0ccc0;
+    --ink-mute: #918c7e;
     --gold: #b08c55;
     --gold-bright: #cfa96e;
     --gold-soft: rgba(176, 140, 85, 0.6);
@@ -72,12 +77,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to bottom, rgba(11,11,18,0.85) 0%, rgba(11,11,18,0) 100%);
+    background: linear-gradient(to bottom, rgba(11,11,18,0.55) 0%, rgba(11,11,18,0) 100%);
+    transition: padding 0.4s ease, background 0.4s ease;
+  }
+  .nav.scrolled {
+    padding: 14px 40px;
+    background: rgba(11,11,18,0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    transition: padding 0.4s ease;
   }
-  .nav.scrolled { padding: 14px 40px; background: rgba(11,11,18,0.92); }
+  .js .nav:not(.scrolled) .nav-mark { opacity: 0; pointer-events: none; }
   .nav-mark {
     display: inline-flex;
     align-items: center;
@@ -96,9 +105,10 @@
     font-weight: 400;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--ink-soft);
-    padding: 8px 22px;
-    border: 1px solid var(--gold-faint);
+    color: var(--ink);
+    padding: 10px 22px;
+    border: 1px solid var(--gold-soft);
+    background: rgba(11,11,18,0.35);
     transition: all 0.4s ease;
   }
   .nav-link:hover {
@@ -152,7 +162,7 @@
     inset: 0;
     background:
       radial-gradient(ellipse at center, rgba(11,11,18,0) 0%, rgba(11,11,18,0.16) 70%, rgba(11,11,18,0.74) 100%),
-      linear-gradient(to bottom, rgba(11,11,18,0.04) 0%, rgba(11,11,18,0) 50%, var(--bg) 100%);
+      linear-gradient(to bottom, rgba(11,11,18,0.04) 0%, rgba(11,11,18,0) 82%, var(--bg) 100%);
     z-index: 2;
   }
   .hero-inner {
@@ -208,7 +218,7 @@
   /* ===== SECTIONS ===== */
   section { position: relative; }
   .section {
-    padding: 140px 40px;
+    padding: 112px 40px;
     max-width: 880px;
     margin: 0 auto;
     position: relative;
@@ -216,7 +226,7 @@
   .section-narrow { max-width: 720px; }
 
   .eyebrow {
-    font-size: 10px;
+    font-size: 10.5px;
     font-weight: 400;
     letter-spacing: 0.42em;
     text-transform: uppercase;
@@ -260,7 +270,7 @@
   }
 
   .body-text {
-    font-size: 15px;
+    font-size: 16.5px;
     line-height: 1.85;
     color: var(--ink-soft);
     font-weight: 300;
@@ -281,36 +291,25 @@
   /* ===== QUOTE SECTION ===== */
   .quote-section {
     background:
-      linear-gradient(rgba(11,11,18,0.5), rgba(11,11,18,0.66)),
-      url('assets/img/background.jpg');
+      linear-gradient(to bottom, var(--bg) 0%, rgba(11,11,18,0.42) 16%, rgba(11,11,18,0.6) 82%, var(--bg) 100%),
+      url('assets/img/cosmos.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center 35%;
     background-attachment: fixed;
   }
-  .quote-section .section { padding: 180px 40px; }
+  .quote-section .section { padding: 150px 40px; }
 
   /* ===== INVITATION ===== */
   .invitation { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 50%, var(--bg) 100%); }
 
   /* ===== WEEKEND ===== */
-  .weekend {
-    position: relative;
-    background:
-      linear-gradient(rgba(11,11,18,0.5), rgba(11,11,18,0.66)),
-      url('assets/img/cosmos.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
-  .weekend::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 220px;
-    background: linear-gradient(to bottom, transparent, var(--bg));
-    pointer-events: none;
+  .weekend { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 55%, var(--bg) 100%); }
+  .fine-note {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 13.5px;
+    color: var(--ink-mute);
+    font-style: italic;
   }
   .weekend-grid {
     display: grid;
@@ -351,7 +350,7 @@
   }
   .rhythm-item {
     display: grid;
-    grid-template-columns: 140px 1fr;
+    grid-template-columns: 150px 1fr;
     gap: 32px;
     padding: 22px 0;
     border-bottom: 1px solid var(--rule);
@@ -361,13 +360,13 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 19px;
     color: var(--gold-bright);
     letter-spacing: 0.04em;
     padding-top: 2px;
   }
   .rhythm-body {
-    font-size: 14.5px;
+    font-size: 15.5px;
     line-height: 1.75;
     color: var(--ink-soft);
   }
@@ -396,7 +395,7 @@
     line-height: 1.5;
   }
   .host-bio {
-    font-size: 14.5px;
+    font-size: 15.5px;
     line-height: 1.8;
     color: var(--ink-soft);
     text-align: left;
@@ -440,10 +439,10 @@
   /* ===== JOIN THE LIST ===== */
   .join {
     background:
-      linear-gradient(rgba(11,11,18,0.42), rgba(11,11,18,0.6)),
-      url('assets/img/background.jpg');
+      linear-gradient(to bottom, var(--bg) 0%, rgba(11,11,18,0.5) 16%, rgba(11,11,18,0.68) 82%, var(--bg) 100%),
+      url('assets/img/cosmos.jpg');
     background-size: cover;
-    background-position: center 30%;
+    background-position: center 80%;
     background-attachment: fixed;
   }
   .join-card {
@@ -498,196 +497,116 @@
   .join-submit:hover { background: var(--gold-bright); border-color: var(--gold-bright); letter-spacing: 0.44em; }
   .join-note {
     margin-top: 24px;
-    font-size: 11.5px;
+    font-size: 12.5px;
     color: var(--ink-mute);
     font-style: italic;
     line-height: 1.7;
   }
 
-  /* ===== RESERVE / CODE GATE (for invited guests) ===== */
-  .reserve { background: var(--bg); }
-
-  .reserve-card {
-    max-width: 560px;
+  /* ===== UPCOMING NIGHTS ===== */
+  .nights {
+    background:
+      linear-gradient(to bottom, var(--bg) 0%, rgba(11,11,18,0.5) 16%, rgba(11,11,18,0.7) 82%, var(--bg) 100%),
+      url('assets/img/background.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+  }
+  #nights, #join { scroll-margin-top: 40px; }
+  .nights-card {
+    max-width: 820px;
     margin: 0 auto;
-    padding: 56px 48px;
+    padding: 8px 44px;
     border: 1px solid var(--gold-faint);
-    background: rgba(18, 18, 27, 0.5);
+    background: rgba(18, 18, 27, 0.6);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    text-align: center;
   }
-
-  .reserve-prompt {
+  .night {
+    display: grid;
+    grid-template-columns: 150px 1fr 190px;
+    gap: 32px;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .night:last-child { border-bottom: none; }
+  .night-date span { display: block; }
+  .night-weekday, .night-year {
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .night-day {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 17px;
-    color: var(--ink-soft);
-    margin-bottom: 32px;
-    line-height: 1.65;
+    font-size: 22px;
+    color: var(--gold-bright);
+    letter-spacing: 0.03em;
+    margin: 4px 0;
   }
-
-  .code-input-wrap {
-    position: relative;
-    margin-bottom: 24px;
-  }
-  .code-input {
-    width: 100%;
-    background: rgba(11,11,18,0.6);
-    border: 1px solid var(--gold-faint);
-    color: var(--ink);
-    padding: 18px 22px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 0.32em;
-    text-align: center;
-    text-transform: uppercase;
-    outline: none;
-    transition: all 0.4s ease;
-  }
-  .code-input::placeholder {
-    color: var(--ink-mute);
-    letter-spacing: 0.32em;
-  }
-  .code-input:focus {
-    border-color: var(--gold-soft);
-    background: rgba(11,11,18,0.8);
-  }
-
-  .code-submit {
-    display: inline-block;
-    padding: 16px 56px;
-    background: transparent;
-    border: 1px solid var(--gold-soft);
-    color: var(--ink);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.5s ease;
-  }
-  .code-submit:hover {
-    background: var(--gold);
-    color: var(--bg);
-    border-color: var(--gold);
-    letter-spacing: 0.44em;
-  }
-
-  .code-message {
-    margin-top: 20px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--ink-mute);
-    min-height: 18px;
-    font-style: italic;
-  }
-  .code-message.error { color: #c97a6e; }
-
-  .checkout-success {
-    display: none;
-    animation: rise 0.8s ease-out forwards;
-  }
-  .checkout-success.visible { display: block; }
-  .event-welcome {
+  .night-city {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
     font-size: 28px;
-    letter-spacing: 0.08em;
-    color: var(--gold-bright);
-    margin-bottom: 8px;
-    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
   }
-  .event-subtitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: var(--ink-soft);
-    margin-bottom: 36px;
-    text-align: center;
-    line-height: 1.5;
-  }
-  .event-details {
-    margin: 0 0 32px;
-    padding: 22px 0;
-    border-top: 1px solid var(--gold-faint);
-    border-bottom: 1px solid var(--gold-faint);
-    text-align: left;
-  }
-  .event-row {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 16px;
-    padding: 9px 0;
-    align-items: baseline;
-  }
-  .event-row-soft .event-value { color: var(--ink-mute); font-style: italic; }
-  .event-label {
-    font-size: 9.5px;
-    font-weight: 400;
-    letter-spacing: 0.36em;
-    text-transform: uppercase;
-    color: var(--gold-bright);
-  }
-  .event-value {
+  .night-detail {
+    margin-top: 8px;
     font-size: 13.5px;
-    color: var(--ink);
-    line-height: 1.55;
-    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-soft);
   }
-  .event-refund {
-    margin: 8px 0 28px;
-    padding: 14px 4px 0;
+  .night-action { text-align: center; }
+  .night-action a { display: block; padding-left: 0; padding-right: 0; }
+  .night-price {
     font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--ink-mute);
-    text-align: center;
-    letter-spacing: 0.01em;
+    font-size: 21px;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
   }
-  .checkout-link {
+  .btn-gold, .btn-ghost {
     display: inline-block;
-    padding: 18px 64px;
-    background: var(--gold);
-    color: var(--bg);
+    padding: 15px 34px;
     font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     font-weight: 500;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.36em;
     text-transform: uppercase;
     transition: all 0.5s ease;
-    margin-top: 18px;
+    white-space: nowrap;
   }
-  .checkout-link:hover {
-    background: var(--ink);
-    color: var(--bg);
-  }
-  .checkout-note {
-    margin-top: 22px;
-    font-size: 12px;
-    color: var(--ink-mute);
+  .btn-gold { background: var(--gold); border: 1px solid var(--gold); color: var(--bg); }
+  .btn-gold:hover { background: var(--gold-bright); border-color: var(--gold-bright); }
+  .btn-ghost { border: 1px solid var(--gold-soft); color: var(--ink); }
+  .btn-ghost:hover { background: rgba(176,140,85,0.12); }
+  .nights-empty { padding: 44px 0 48px; text-align: center; }
+  .nights-empty p {
+    font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    line-height: 1.6;
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto 30px;
   }
-
-  .reserve-quiet {
-    margin-top: 56px;
+  .nights-quiet {
+    margin-top: 40px;
     text-align: center;
-    font-size: 12px;
-    color: var(--ink-mute);
-    letter-spacing: 0.08em;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
     line-height: 1.8;
   }
-  .reserve-quiet a {
+  .nights-quiet a {
     color: var(--gold-bright);
     border-bottom: 1px solid var(--gold-faint);
     padding-bottom: 1px;
-    transition: border-color 0.4s ease;
   }
-  .reserve-quiet a:hover { border-color: var(--gold); }
+  [hidden] { display: none !important; }
 
   /* ===== FOOTER ===== */
   footer {
@@ -763,13 +682,21 @@
     50% { opacity: 0.75; }
   }
 
-  /* ===== REVEAL ON SCROLL ===== */
-  .reveal {
+  .footer-meta a { transition: color 0.4s ease; }
+  .footer-meta a:hover { color: var(--ink-soft); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 1px solid var(--gold-bright);
+    outline-offset: 3px;
+  }
+
+  /* ===== REVEAL ON SCROLL (only when scripts run, so the page never sits blank) ===== */
+  .js .reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 1.2s ease, transform 1.2s ease;
   }
-  .reveal.in {
+  .js .reveal.in {
     opacity: 1;
     transform: translateY(0);
   }
@@ -788,7 +715,7 @@
     .nav-mark img { height: 42px; }
     .eyebrow { letter-spacing: 0.28em; gap: 12px; }
     .eyebrow::before, .eyebrow::after { flex: 0 0 28px; }
-    .reserve-quiet a { display: inline-block; padding: 6px 2px; }
+    .nights-quiet a { display: inline-block; padding: 6px 2px; }
 
     .hero { padding: 100px 24px 8vh; }
     .hero-bg { background-position: center 20%; }
@@ -810,22 +737,40 @@
       gap: 8px;
     }
 
-    .join-card, .reserve-card { padding: 40px 28px; }
-    .quote-section, .weekend, .join { background-attachment: scroll; }
+    .join-card { padding: 40px 28px; }
+    .quote-section, .nights, .join { background-attachment: scroll; }
+
+    .body-text { font-size: 16px; }
+    .nights-card { padding: 4px 26px; }
+    .night {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      text-align: center;
+      padding: 34px 0;
+    }
+    .night-action a { display: inline-block; min-width: 220px; }
+    .cta-band { letter-spacing: 0.26em; line-height: 2; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    body { opacity: 1; animation: none; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+    .star-tiny, .hero-scroll { animation: none; }
   }
 </style>
 </head>
 <body>
 
 <!-- subtle background starfield -->
-<div class="starfield" id="starfield"></div>
+<div class="starfield" id="starfield" aria-hidden="true"></div>
 
 <!-- ===== NAV ===== -->
 <nav class="nav" id="nav">
   <a href="#top" class="nav-mark" aria-label="Night Under the Stars">
     <img src="assets/logo/nuts-horiz.svg" alt="Night Under the Stars" />
   </a>
-  <a href="#join" class="nav-link">Join the List</a>
+  <a href="#nights" class="nav-link">Upcoming Nights</a>
 </nav>
 
 <!-- ===== HERO ===== -->
@@ -835,23 +780,18 @@
 </section>
 
 <!-- ===== CTA BAND ===== -->
-<a class="cta-band" href="#join" id="welcome">Hear About Upcoming Nights &nbsp;&#8594;</a>
+<a class="cta-band" href="#nights" id="welcome">Single Nights, City by City &nbsp;&middot;&nbsp; See Upcoming Nights &nbsp;&#8594;</a>
 
 <!-- ===== OPENING QUOTE ===== -->
 <section class="quote-section">
   <div class="section section-narrow reveal">
-    <div class="ornamental-quote">&ldquo;</div>
+    <div class="ornamental-quote" aria-hidden="true">&ldquo;</div>
     <p class="lede">
       Amid the chaos of Disclosure, a narrow opening appears: the realization that reality holds <em>much</em> more than we perceive. This isn&rsquo;t a search for proof &mdash; it&rsquo;s a search to remember what was once known but since forgotten.
     </p>
     <div class="attribution">&mdash; Jordan Jozak</div>
   </div>
 </section>
-
-<!-- ===== STAR DIVIDER ===== -->
-<div class="star-divider reveal">
-  <img src="assets/logo/star.svg" alt="" />
-</div>
 
 <!-- ===== INVITATION ===== -->
 <section class="invitation">
@@ -860,31 +800,31 @@
     <h2>An evening that asks something else of you.</h2>
     <div class="body-text">
       <p>
-        Night Under the Stars is a small, intentional gathering. A handful of people, brought to a quiet place to spend a weekend together &mdash; not at an event, not at a conference, but in the kind of stretched, contemplative time that has become rare.
+        Night Under the Stars is a small, intentional gathering. One evening, one sky, and a circle of people in a quiet place beyond the city lights &mdash; not an event, not a conference, but the kind of stretched, contemplative time that has become rare.
       </p>
       <p>
-        There is no agenda we are trying to convince you of, no apparatus you need to be wired to. The weekend opens an unhurried space for stillness, for conversation, and for the kinds of experiences that have always been available to those who slow down enough to notice.
+        There is no agenda we are trying to convince you of, no apparatus you need to be wired to. The night opens an unhurried space for stillness, for conversation, and for the kinds of experiences that have always been available to those who slow down enough to notice.
       </p>
       <p>
         We do not promise the phenomenon will arrive. We are simply creating the conditions that have, across many traditions and many lives, made it possible.
       </p>
       <p>
-        If you found your way here after hearing the name somewhere &mdash; welcome. This page is the door. The list below is how you hear when the next night opens.
+        If you found your way here after hearing the name somewhere &mdash; welcome. This page is the door. Upcoming nights are listed below, and the list is how you hear when one opens near you.
       </p>
     </div>
   </div>
 </section>
 
-<!-- ===== THE WEEKEND ===== -->
+<!-- ===== THE NIGHT ===== -->
 <section class="weekend">
   <div class="section reveal">
-    <div class="eyebrow">II &middot; The Weekend</div>
-    <h2>Three days, one sky.</h2>
+    <div class="eyebrow">II &middot; The Night</div>
+    <h2>One night, one sky.</h2>
 
     <div class="weekend-grid">
       <div class="weekend-cell">
         <div class="weekend-label">Format</div>
-        <div class="weekend-value">Three Days<br/>Friday &mdash; Sunday</div>
+        <div class="weekend-value">A Single Evening<br/>Dusk into Night</div>
       </div>
       <div class="weekend-cell">
         <div class="weekend-label">Scale</div>
@@ -892,27 +832,31 @@
       </div>
       <div class="weekend-cell">
         <div class="weekend-label">Place</div>
-        <div class="weekend-value">Intentional Settings<br/>Across the Country</div>
+        <div class="weekend-value">Dark Skies<br/>City by City</div>
       </div>
     </div>
 
     <div class="rhythm">
       <div class="rhythm-item">
-        <div class="rhythm-day">Friday evening</div>
-        <div class="rhythm-body">Arrival, a welcome dinner together, and a soft opening of the weekend. You set down what you arrived carrying.</div>
+        <div class="rhythm-day">Dusk</div>
+        <div class="rhythm-body">Arrival as the light goes. You meet the circle, settle onto the land, and set down what you arrived carrying.</div>
       </div>
       <div class="rhythm-item">
-        <div class="rhythm-day">Saturday</div>
-        <div class="rhythm-body">Morning together. The afternoon is yours &mdash; the land, the air, the quiet. Saturday evening is the centerpiece: a long, slow night under an open sky.</div>
+        <div class="rhythm-day">Nightfall</div>
+        <div class="rhythm-body">Jordan opens the evening: where this practice comes from, and how to meet the night with an open heart rather than an expectation.</div>
       </div>
       <div class="rhythm-item">
-        <div class="rhythm-day">Sunday morning</div>
-        <div class="rhythm-body">Breakfast, integration, and a late-morning departure. You leave with what you came for, in your own time.</div>
+        <div class="rhythm-day">Under the sky</div>
+        <div class="rhythm-body">The centerpiece &mdash; a long, guided stillness beneath the open sky, practiced together. Then quiet. You watch, you listen, you notice.</div>
+      </div>
+      <div class="rhythm-item">
+        <div class="rhythm-day">Before you go</div>
+        <div class="rhythm-body">A closing circle, to share what moved or to keep it. You leave with what you came for, in your own time.</div>
       </div>
     </div>
 
-    <p class="body-text" style="text-align: center; margin-top: 56px; font-size: 13px; color: var(--ink-mute); font-style: italic;">
-      Each night is announced to the list first. Specific dates, location, and what to bring travel with your invitation.
+    <p class="fine-note">
+      Exact location, arrival time, and what to bring arrive by email once you reserve.
     </p>
   </div>
 </section>
@@ -922,10 +866,34 @@
   <img src="assets/art/starman.svg" alt="" />
 </div>
 
+<!-- ===== UPCOMING NIGHTS ===== -->
+<section class="nights" id="nights">
+  <div class="section reveal">
+    <div class="eyebrow">III &middot; Upcoming Nights</div>
+    <h2>Find a night near you.</h2>
+
+    <div class="nights-card">
+      <!-- Filled from the NIGHTS list at the bottom of this file. Empty list = the note below. -->
+      <div class="nights-list" id="nights-list" hidden></div>
+
+      <div class="nights-empty" id="nights-empty">
+        <p>
+          The first nights are being set now &mdash; single evenings, city by city. Leave your city on the list and you&rsquo;ll hear the moment one opens near you.
+        </p>
+        <a class="btn-gold" href="#join">Join the List</a>
+      </div>
+    </div>
+
+    <p class="nights-quiet" id="nights-quiet" hidden>
+      Don&rsquo;t see your city? <a href="#join">Leave it on the list</a> &mdash; it helps decide where the next nights land.
+    </p>
+  </div>
+</section>
+
 <!-- ===== HOST ===== -->
 <section class="hosts">
   <div class="section reveal">
-    <div class="eyebrow">III &middot; Your Host</div>
+    <div class="eyebrow">IV &middot; Your Host</div>
     <h2>Time with someone doing the work.</h2>
 
     <div class="host-single">
@@ -936,17 +904,9 @@
           Jordan has worked publicly as an entrepreneur for over a decade, with successful scale-ups in technology and utilities. In April 2024 he came forward as &ldquo;Martin,&rdquo; a pseudonymous voice on Substack writing about classified consciousness research, before revealing his identity later that year. He joined Skywatcher as a psionic asset alongside several operators who have since stepped into the public arena, and has been featured in investigative journalist Ross Coulthart&rsquo;s reporting on the field.
         </p>
         <p>
-          His current work brings firsthand experience of exotic technology and non-human intelligence into the open, building bridges from the disclosure domain to ordinary life. Night Under the Stars is the most personal of those bridges: a weekend at a time, a sky at a time.
+          His current work brings firsthand experience of exotic technology and non-human intelligence into the open, building bridges from the disclosure domain to ordinary life. Night Under the Stars is the most personal of those bridges: a night at a time, a sky at a time.
         </p>
       </div>
-    </div>
-
-    <div class="guests-block reveal">
-      <img class="guests-ornament" src="assets/logo/star.svg" alt="" />
-      <div class="guests-eyebrow">Voices from the Network</div>
-      <p class="guests-body">
-        Each gathering draws practitioners and guests from the broader field &mdash; experiencers, researchers, contemplatives &mdash; chosen for the night and the circle. Their presence shapes the conversation, and the conversation shapes the weekend.
-      </p>
     </div>
   </div>
 </section>
@@ -959,89 +919,29 @@
 <!-- ===== JOIN THE LIST ===== -->
 <section class="join" id="join">
   <div class="section section-narrow reveal">
-    <div class="eyebrow">IV &middot; Upcoming Nights</div>
-    <h2>Hear when the next night opens.</h2>
+    <div class="eyebrow">V &middot; The List</div>
+    <h2>Hear when a night opens near you.</h2>
 
     <div class="join-card">
       <p class="join-prompt">
-        Nights are small and announced quietly. Leave your email and you&rsquo;ll hear first &mdash; and if there&rsquo;s something you want to say or ask, this same window reaches Jordan directly.
+        Nights are small and announced to the list first. Leave your email and your city &mdash; it helps decide where the next ones land. And if there&rsquo;s something you want to say or ask, this same window reaches Jordan directly.
       </p>
       <form class="join-form" name="upcoming-nights" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field">
         <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
-        <input class="join-input" type="text" name="name" placeholder="Your name (optional)" autocomplete="name" />
-        <input class="join-input" type="email" name="email" placeholder="Your email" autocomplete="email" required />
-        <textarea class="join-input" name="message" rows="3" placeholder="Anything you&rsquo;d like to share or ask (optional)" style="resize:none; text-align:left; line-height:1.6;"></textarea>
+        <label class="visually-hidden" for="join-name">Your name (optional)</label>
+        <input class="join-input" id="join-name" type="text" name="name" placeholder="Your name (optional)" autocomplete="name" />
+        <label class="visually-hidden" for="join-email">Your email</label>
+        <input class="join-input" id="join-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+        <label class="visually-hidden" for="join-city">Your city</label>
+        <input class="join-input" id="join-city" type="text" name="city" placeholder="Your city" autocomplete="address-level2" />
+        <label class="visually-hidden" for="join-message">Anything you&rsquo;d like to share or ask (optional)</label>
+        <textarea class="join-input" id="join-message" name="message" rows="3" placeholder="Anything you&rsquo;d like to share or ask (optional)" style="resize:none; text-align:left; line-height:1.6;"></textarea>
         <button class="join-submit" type="submit">Send</button>
       </form>
       <p class="join-note">
-        One email when a night opens &mdash; that&rsquo;s the whole arrangement. Messages are read by a person, not a system.
+        One email when a night opens near you &mdash; that&rsquo;s the whole arrangement. Messages are read by a person, not a system.
       </p>
     </div>
-  </div>
-</section>
-
-<!-- ===== RESERVE (invited guests) ===== -->
-<section class="reserve" id="reserve">
-  <div class="section section-narrow reveal">
-    <div class="eyebrow">V &middot; Already Invited?</div>
-    <h2>If you&rsquo;ve received an invitation, you&rsquo;ve received a code.</h2>
-
-    <div class="reserve-card">
-      <div id="gate-view">
-        <p class="reserve-prompt">
-          Enter the invitation code you received from Jordan to continue to checkout.
-        </p>
-        <div class="code-input-wrap">
-          <input type="text" class="code-input" id="code-input" placeholder="Invitation code" autocomplete="off" spellcheck="false" />
-        </div>
-        <button class="code-submit" id="code-submit">Continue</button>
-        <div class="code-message" id="code-message">&nbsp;</div>
-      </div>
-
-      <div id="checkout-view" class="checkout-success">
-        <p class="event-welcome">Welcome.</p>
-        <p class="event-subtitle" id="event-subtitle">Here are the details of the weekend you&rsquo;ve been invited to.</p>
-
-        <div class="event-details" id="event-details">
-          <div class="event-row">
-            <span class="event-label">When</span>
-            <span class="event-value" id="event-when">&mdash;</span>
-          </div>
-          <div class="event-row">
-            <span class="event-label">Where</span>
-            <span class="event-value" id="event-where">&mdash;</span>
-          </div>
-          <div class="event-row">
-            <span class="event-label">Investment</span>
-            <span class="event-value" id="event-price">&mdash;</span>
-          </div>
-          <div class="event-row">
-            <span class="event-label">Includes</span>
-            <span class="event-value" id="event-includes">&mdash;</span>
-          </div>
-          <div class="event-row event-row-soft">
-            <span class="event-label">Bring</span>
-            <span class="event-value" id="event-bring">&mdash;</span>
-          </div>
-        </div>
-
-        <div class="event-refund">
-          Full refund up to 30 days before the event. 50% refund 14&ndash;29 days before. No refund inside 14 days. Seats transferable to another invited guest with 7 days notice.
-        </div>
-
-        <a href="#" class="checkout-link" id="checkout-link" target="_blank" rel="noopener">Complete Reservation</a>
-        <p class="checkout-note">
-          Payment is processed securely by Stripe.<br/>
-          A release of liability and brief health disclosure are signed before arrival.<br/>
-          Full address, lodging detail, and arrival logistics arrive by email.
-        </p>
-      </div>
-    </div>
-
-    <p class="reserve-quiet">
-      Lost or unsure of your code?<br/>
-      <a href="#join">Use the window above</a> and mention your invitation &mdash; it reaches Jordan directly.
-    </p>
   </div>
 </section>
 
@@ -1049,40 +949,90 @@
 <footer>
   <div class="footer-mark">Night Under the Stars</div>
   <div class="footer-meta">
-    <a href="#join">Get in touch</a>
+    <a href="#nights">Upcoming nights</a> &nbsp;&middot;&nbsp; <a href="#join">Get in touch</a>
   </div>
 </footer>
 
 <script>
-  // ===== EVENTS =====
-  // Each event has its own location, dates, price, Stripe link, and a single shared code.
-  // Stripe Payment Link should be set with max quantity = 8 (handles seat limit automatically).
-  // Add a new event below when you launch the next one. The public page never changes.
-  // Codes are case-insensitive on entry. Friction not security — fine for personal invitations.
-  const EVENTS = {
-    'hudson-jun-2026': {
-      welcome: 'Hudson Valley · June 2026',
-      when: 'Friday, June 12 — Sunday, June 14, 2026',
-      where: 'Hudson Valley, New York — exact address shared upon reservation',
-      price: '$3,500 per seat',
-      includes: 'Lodging, all meals, and the full weekend experience',
-      bring: 'Comfortable layers, a journal, headphones for the guided audio, and shoes for walking the land. The weekend lives mostly outdoors.',
-      stripe_link: 'https://buy.stripe.com/dRm8wOgyi6NO8E30wIgQE01',
-      codes: ['UNDERTHESKY']
-    }
-    // Future events go here:
-    // 'sedona-nov-2026': { welcome: '...', when: '...', ..., codes: ['SEDONA-NOV-26'] }
-  };
+  // ===== NIGHTS =====
+  // One entry per night. The page lists upcoming nights in date order and drops each one
+  // by itself the day after it happens. An empty list shows "the first nights are being set".
+  // Only add a night once its city, date and price are confirmed.
+  //
+  //   {
+  //     id:      'city-2027-01-16',            // letters, numbers, dashes; travels to Stripe as client_reference_id
+  //     city:    'City',
+  //     region:  'State',
+  //     date:    '2027-01-16',                 // YYYY-MM-DD, the evening it begins
+  //     detail:  'Arrive at dusk · location shared when you reserve',
+  //     price:   '$00',
+  //     link:    'https://buy.stripe.com/...',  // that night's Stripe Payment Link; leave '' to show "Opening soon"
+  //     soldOut: false                          // true shows "Full" and points to the list
+  //   }
+  const NIGHTS = [];
 
-  function findEventByCode(code) {
-    const upper = code.toUpperCase();
-    for (const [eventId, event] of Object.entries(EVENTS)) {
-      if (event.codes.some(c => c.toUpperCase() === upper)) {
-        return { eventId, event };
-      }
-    }
-    return null;
+  function el(tag, cls, text) {
+    const n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
   }
+
+  function renderNights(nights) {
+    const list = document.getElementById('nights-list');
+    const empty = document.getElementById('nights-empty');
+    const quiet = document.getElementById('nights-quiet');
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const upcoming = nights
+      .filter(n => new Date(n.date + 'T23:59:59') >= today)
+      .sort((a, b) => a.date.localeCompare(b.date));
+
+    list.textContent = '';
+    const has = upcoming.length > 0;
+    list.hidden = !has;
+    quiet.hidden = !has;
+    empty.hidden = has;
+    if (!has) return;
+
+    upcoming.forEach(n => {
+      const d = new Date(n.date + 'T12:00:00');
+      const row = el('div', 'night');
+
+      const when = el('div', 'night-date');
+      when.appendChild(el('span', 'night-weekday', d.toLocaleDateString('en-US', { weekday: 'long' })));
+      when.appendChild(el('span', 'night-day', d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })));
+      when.appendChild(el('span', 'night-year', String(d.getFullYear())));
+      row.appendChild(when);
+
+      const where = el('div', 'night-where');
+      where.appendChild(el('div', 'night-city', n.region ? n.city + ', ' + n.region : n.city));
+      if (n.detail) where.appendChild(el('div', 'night-detail', n.detail));
+      row.appendChild(where);
+
+      const act = el('div', 'night-action');
+      if (n.soldOut) {
+        act.appendChild(el('div', 'night-price', 'Full'));
+        const a = el('a', 'btn-ghost', 'Join the List');
+        a.href = '#join';
+        act.appendChild(a);
+      } else if (n.link) {
+        if (n.price) act.appendChild(el('div', 'night-price', n.price));
+        const a = el('a', 'btn-gold', 'Reserve');
+        a.href = n.link + (n.link.indexOf('?') > -1 ? '&' : '?') + 'client_reference_id=' + encodeURIComponent(n.id || '');
+        a.rel = 'noopener';
+        a.setAttribute('aria-label', 'Reserve a seat for ' + n.city + ', ' + d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }));
+        act.appendChild(a);
+      } else {
+        act.appendChild(el('div', 'night-price', 'Opening soon'));
+        const a = el('a', 'btn-ghost', 'Hear First');
+        a.href = '#join';
+        act.appendChild(a);
+      }
+      row.appendChild(act);
+      list.appendChild(row);
+    });
+  }
+  renderNights(NIGHTS);
 
   // ===== STARFIELD =====
   (function() {
@@ -1101,68 +1051,27 @@
 
   // ===== NAV SCROLL EFFECT =====
   const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
+  function onScroll() {
     if (window.scrollY > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
-  });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 
   // ===== REVEAL ON SCROLL =====
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('in');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // ===== CODE GATE =====
-  const codeInput = document.getElementById('code-input');
-  const codeSubmit = document.getElementById('code-submit');
-  const codeMessage = document.getElementById('code-message');
-  const gateView = document.getElementById('gate-view');
-  const checkoutView = document.getElementById('checkout-view');
-  const checkoutLink = document.getElementById('checkout-link');
-
-  function tryCode() {
-    const entered = (codeInput.value || '').trim();
-    if (!entered) {
-      codeMessage.textContent = 'Please enter your invitation code.';
-      codeMessage.classList.add('error');
-      return;
-    }
-    const match = findEventByCode(entered);
-    if (match) {
-      const { event } = match;
-      document.getElementById('event-subtitle').textContent = event.welcome;
-      document.getElementById('event-when').textContent = event.when;
-      document.getElementById('event-where').textContent = event.where;
-      document.getElementById('event-price').textContent = event.price;
-      document.getElementById('event-includes').textContent = event.includes;
-      document.getElementById('event-bring').textContent = event.bring;
-      checkoutLink.href = event.stripe_link + '?client_reference_id=' + encodeURIComponent(entered.toUpperCase());
-      gateView.style.display = 'none';
-      checkoutView.classList.add('visible');
-      codeMessage.classList.remove('error');
-    } else {
-      codeMessage.textContent = 'That code was not recognized. Please check or reach out directly.';
-      codeMessage.classList.add('error');
-      codeInput.value = '';
-      codeInput.focus();
-    }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
   }
-
-  codeSubmit.addEventListener('click', tryCode);
-  codeInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); tryCode(); }
-  });
-  codeInput.addEventListener('input', () => {
-    if (codeMessage.classList.contains('error')) {
-      codeMessage.textContent = ' ';
-      codeMessage.classList.remove('error');
-    }
-  });
 </script>
 
 </body>
