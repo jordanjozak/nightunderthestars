@@ -61,7 +61,25 @@
   </div>
 </section>
 
-<section class="section soft">
+<section class="section soft" id="hear">
+  <div class="wrap narrow reveal">
+    <div class="eyebrow">Dates Releasing Soon</div>
+    <h2>Be the first to hear.</h2>
+    <div class="prose center" style="text-align:center">
+      <p>Join the list and you&rsquo;ll hear the moment dates and cities are released.</p>
+    </div>
+    <form class="signup" name="upcoming-nights" method="POST" action="/on-the-list.html" data-netlify="true" netlify-honeypot="bot-field">
+      <p hidden><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
+      <label class="visually-hidden" for="h-email">Your email</label>
+      <input class="input" id="h-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+      <label class="visually-hidden" for="h-city">Your city (optional)</label>
+      <input class="input" id="h-city" type="text" name="city" placeholder="Your city (optional)" autocomplete="address-level2" />
+      <button class="btn btn-gold" type="submit">Join the List <span class="arrow" aria-hidden="true">&rarr;</span></button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
   <div class="wrap reveal">
     <div class="eyebrow">The Night</div>
     <h2>One night, one sky.</h2>
@@ -87,24 +105,6 @@
         <div class="step-body">Two unhurried hours under the open sky. You watch, you listen, you notice.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="section soft" id="hear">
-  <div class="wrap narrow reveal">
-    <div class="eyebrow">Dates Releasing Soon</div>
-    <h2>Be the first to hear.</h2>
-    <div class="prose center" style="text-align:center">
-      <p>Join the list and you&rsquo;ll hear the moment dates and cities are released.</p>
-    </div>
-    <form class="signup" name="upcoming-nights" method="POST" action="/on-the-list.html" data-netlify="true" netlify-honeypot="bot-field">
-      <p hidden><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
-      <label class="visually-hidden" for="h-email">Your email</label>
-      <input class="input" id="h-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
-      <label class="visually-hidden" for="h-city">Your city (optional)</label>
-      <input class="input" id="h-city" type="text" name="city" placeholder="Your city (optional)" autocomplete="address-level2" />
-      <button class="btn btn-gold" type="submit">Join the List <span class="arrow" aria-hidden="true">&rarr;</span></button>
-    </form>
   </div>
 </section>
 
