@@ -20,6 +20,7 @@ the next three and Events shows all of them, sorted by date; each night drops of
 day after it happens. With no nights, the calendar section is hidden on both pages.
 `PLANNED` is the list of city names shown on Events under "Where we're headed"; a city drops off
 it by itself once it has an upcoming night.
+(Not shown on the site for now: Jordan pulled the "Twenty Seats" note on Nov 18 until the numbers are settled.)
 Each night holds 20 seats, paid in full at booking, and confirms a week ahead once 12 are reserved;
 if it does not confirm, everyone is refunded in full. The location and details are emailed a week
 ahead, in the same email that confirms the night (Jordan, Nov 18). Stripe keeps its processing fee on a refund.
