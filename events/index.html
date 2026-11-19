@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Upcoming Nights — Night Under the Stars | Meditation &amp; UAP Sky Watch Events</title>
-<meta name="description" content="Join a night under dark skies with Jordan Jozak: a conversation, a guided meditation and two hours of sky watch. Dates and cities are listed here." />
+<meta name="description" content="Join a night under dark skies with Jordan Jozak: a conversation, a guided meditation and two hours of sky watch. Dates are releasing soon; join the list to hear first." />
 <link rel="canonical" href="https://nightunderthestars.com/events/" />
 <meta property="og:title" content="Upcoming Nights — Night Under the Stars | Meditation &amp; UAP Sky Watch Events" />
-<meta property="og:description" content="Join a night under dark skies with Jordan Jozak: a conversation, a guided meditation and two hours of sky watch. Dates and cities are listed here." />
+<meta property="og:description" content="Join a night under dark skies with Jordan Jozak: a conversation, a guided meditation and two hours of sky watch. Dates are releasing soon; join the list to hear first." />
 <meta property="og:image" content="https://nightunderthestars.com/assets/img/hero.jpg" />
 <meta property="og:url" content="https://nightunderthestars.com/events/" />
 <meta property="og:type" content="website" />
@@ -69,7 +69,25 @@
   </div>
 </section>
 
-<section class="section soft" data-nights-section hidden>
+<section class="section soft" id="hear">
+  <div class="wrap narrow reveal">
+    <div class="eyebrow">Dates Releasing Soon</div>
+    <h2>Be the first to hear.</h2>
+    <div class="prose center" style="text-align:center">
+      <p>Join the list and you&rsquo;ll hear the moment dates and cities are released.</p>
+    </div>
+    <form class="signup" name="upcoming-nights" method="POST" action="/on-the-list.html" data-netlify="true" netlify-honeypot="bot-field">
+      <p hidden><label>Don&rsquo;t fill this out: <input name="bot-field" /></label></p>
+      <label class="visually-hidden" for="e-email">Your email</label>
+      <input class="input" id="e-email" type="email" name="email" placeholder="Your email" autocomplete="email" required />
+      <label class="visually-hidden" for="e-city">Your city (optional)</label>
+      <input class="input" id="e-city" type="text" name="city" placeholder="Your city (optional)" autocomplete="address-level2" />
+      <button class="btn btn-gold" type="submit">Join the List <span class="arrow" aria-hidden="true">&rarr;</span></button>
+    </form>
+  </div>
+</section>
+
+<section class="section tight" data-nights-section hidden>
   <div class="wrap reveal">
     <div class="eyebrow">The Calendar</div>
     <h2>Upcoming nights.</h2>
@@ -80,7 +98,7 @@
   </div>
 </section>
 
-<section class="section tight" id="planned">
+<section class="section tight" id="planned" hidden>
   <div class="wrap reveal">
     <div class="eyebrow">On the Map</div>
     <h2>Where we&rsquo;re headed this winter.</h2>

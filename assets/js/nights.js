@@ -17,5 +17,5 @@
 // PLANNED: cities on the map that have no date yet. Shown on the Events page as plain names.
 window.NUTS = {
   NIGHTS: [],
-  PLANNED: ['Phoenix', 'Tucson', 'Sedona', 'San Diego', 'Los Angeles', 'San Francisco', 'St. George · Zion', 'Austin']
+  PLANNED: []   // taken off Nov 18 while Jordan settles the cities; add names back to show "Where we're headed" on Events
 };
